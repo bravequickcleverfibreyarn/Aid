@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Aid</name>
+        <name>Software9119.Aid</name>
     </assembly>
     <members>
         <member name="M:Software9119.Aid.Collection.CollectionExtension.ToIList``1(System.Collections.Generic.IEnumerable{``0})">

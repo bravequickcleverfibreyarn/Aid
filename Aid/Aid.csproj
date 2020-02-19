@@ -9,6 +9,8 @@
     <Company>Software9119</Company>
     <Copyright>Verbal consent needed.</Copyright>
     <Description>Aide types.</Description>
+    <AssemblyName>Software9119.Aid</AssemblyName>
+    <Product>Aid</Product>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
