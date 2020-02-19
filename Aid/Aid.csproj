@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Software9119.Aid</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Software9119.Aid</PackageId>
+    <Authors>Jiri Cepelka</Authors>
+    <Company>Software9119</Company>
+    <Copyright>Verbal consent needed.</Copyright>
+    <Description>Aide types.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\JC\source\repos\Aid\Aid\Aid.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>
