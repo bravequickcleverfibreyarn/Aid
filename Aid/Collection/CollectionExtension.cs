@@ -41,7 +41,7 @@ namespace Software9119.Aid.Collection
     /// <param name="emptyForNull">Choses null or empty collection for null source.</param>
     public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(IEnumerable<T> iEnumerable, bool emptyForNull)
     {
-      return !emptyForNull && iEnumerable == null ? null : new ReadOnlyCollection<T>(iEnumerable.ToIList(emptyForNull));
+      return iEnumerable == null && !emptyForNull ? null : new ReadOnlyCollection<T>(iEnumerable.ToIList(emptyForNull));
     }
 
 #pragma warning restore CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
