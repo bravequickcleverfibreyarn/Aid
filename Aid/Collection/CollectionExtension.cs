@@ -6,7 +6,7 @@ namespace Software9119.Aid.Collection
 {
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-  public static class CollectionExtension
+  static public class CollectionExtension
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
 
@@ -15,7 +15,7 @@ namespace Software9119.Aid.Collection
     /// Useful for <see cref="ReadOnlyCollection{T}.ReadOnlyCollection(IList{T})"/> constructor.
     /// </summary>    
     /// <param name="emptyForNull">Choses null or empty collection for null source.</param>
-    public static IList<T> ToIList<T>(this IEnumerable<T> iEnumerable, bool emptyForNull)
+    static public IList<T> ToIList<T>(this IEnumerable<T> iEnumerable, bool emptyForNull)
     {
       if (iEnumerable == null)
       {
@@ -39,7 +39,7 @@ namespace Software9119.Aid.Collection
     /// The <see cref="ReadOnlyCollection{T}"/> from any enumerable.
     /// </summary>
     /// <param name="emptyForNull">Choses null or empty collection for null source.</param>
-    public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(IEnumerable<T> iEnumerable, bool emptyForNull)
+    static public ReadOnlyCollection<T> ToReadOnlyCollection<T>(IEnumerable<T> iEnumerable, bool emptyForNull)
     {
       return iEnumerable == null && !emptyForNull ? null : new ReadOnlyCollection<T>(iEnumerable.ToIList(emptyForNull));
     }
