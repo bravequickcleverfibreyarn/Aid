@@ -60,7 +60,7 @@ namespace Test
     [TestMethod]
     public void ToReadOnlyCollection_ProvidedWithNullExpectsNull_ReturnsNull()
     {
-      ReadOnlyCollection<string> readOnlyCollection = CollectionExtension.ToReadOnlyCollection<string>(null, false);
+      ReadOnlyCollection<string> readOnlyCollection = ((IEnumerable<string>)null).ToReadOnlyCollection<string>(false);
 
       Assert.IsTrue(readOnlyCollection == null);
     }
@@ -68,7 +68,7 @@ namespace Test
     [TestMethod]
     public void ToReadOnlyCollection_ProvidedWithNullExpectsEmpty_ReturnsEmpty()
     {
-      ReadOnlyCollection<string> readOnlyCollection = CollectionExtension.ToReadOnlyCollection<string>(null, true);
+      ReadOnlyCollection<string> readOnlyCollection = ((IEnumerable<string>)null).ToReadOnlyCollection<string>(true);
             
       Assert.IsTrue(readOnlyCollection.Count == 0);
     }    

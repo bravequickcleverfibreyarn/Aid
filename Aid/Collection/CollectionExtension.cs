@@ -39,7 +39,7 @@ namespace Software9119.Aid.Collection
     /// The <see cref="ReadOnlyCollection{T}"/> from any enumerable.
     /// </summary>
     /// <param name="emptyForNull">Choses null or empty collection for null source.</param>
-    static public ReadOnlyCollection<T> ToReadOnlyCollection<T>(IEnumerable<T> iEnumerable, bool emptyForNull)
+    static public ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> iEnumerable, bool emptyForNull)
     {
       return iEnumerable == null && !emptyForNull ? null : new ReadOnlyCollection<T>(iEnumerable.ToIList(emptyForNull));
     }
