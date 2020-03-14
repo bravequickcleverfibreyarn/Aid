@@ -39,6 +39,14 @@ namespace Test
       Assert.IsTrue(iListOfInt is TestList<int>);      
     }
 
+    [TestMethod]
+    public void ToIList_ProvidedWithNullExpectsDefault_ReturnsNull()
+    {
+      IList<int> iListOfInt = ((IEnumerable<int>)null).ToIList();
+
+      Assert.IsTrue(iListOfInt == null);
+    }
+
 
     [TestMethod]
     public void ToIList_ProvidedWithNullExpectsNull_ReturnsNull()
@@ -58,9 +66,17 @@ namespace Test
     }
 
     [TestMethod]
+    public void ToReadOnlyCollection_ProvidedWithNullExpectsDefault_ReturnsNull()
+    {
+      ReadOnlyCollection<string> readOnlyCollection = ((IEnumerable<string>)null).ToReadOnlyCollection();
+
+      Assert.IsTrue(readOnlyCollection == null);
+    }
+
+    [TestMethod]
     public void ToReadOnlyCollection_ProvidedWithNullExpectsNull_ReturnsNull()
     {
-      ReadOnlyCollection<string> readOnlyCollection = ((IEnumerable<string>)null).ToReadOnlyCollection<string>(false);
+      ReadOnlyCollection<string> readOnlyCollection = ((IEnumerable<string>)null).ToReadOnlyCollection(false);
 
       Assert.IsTrue(readOnlyCollection == null);
     }
@@ -68,7 +84,7 @@ namespace Test
     [TestMethod]
     public void ToReadOnlyCollection_ProvidedWithNullExpectsEmpty_ReturnsEmpty()
     {
-      ReadOnlyCollection<string> readOnlyCollection = ((IEnumerable<string>)null).ToReadOnlyCollection<string>(true);
+      ReadOnlyCollection<string> readOnlyCollection = ((IEnumerable<string>)null).ToReadOnlyCollection(true);
             
       Assert.IsTrue(readOnlyCollection.Count == 0);
     }    
