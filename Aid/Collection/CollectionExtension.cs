@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace Software9119.Aid.Collection
 {
@@ -16,7 +15,7 @@ namespace Software9119.Aid.Collection
     /// Useful for <see cref="ReadOnlyCollection{T}.ReadOnlyCollection(IList{T})"/> constructor.
     /// </summary>    
     /// <param name="emptyForNull">Choses null or empty collection for null source.</param>
-    static public IList<T> ToIList<T>(this IEnumerable<T> iEnumerable, [Optional] bool emptyForNull)
+    static public IList<T> ToIList<T>(this IEnumerable<T> iEnumerable, bool emptyForNull = default)
     {
       if (iEnumerable == null)
       {
@@ -40,7 +39,7 @@ namespace Software9119.Aid.Collection
     /// The <see cref="ReadOnlyCollection{T}"/> from any enumerable.
     /// </summary>
     /// <param name="emptyForNull">Choses null or empty collection for null source.</param>
-    static public ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> iEnumerable, [Optional] bool emptyForNull)
+    static public ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> iEnumerable, bool emptyForNull = default)
     {
       return iEnumerable == null && !emptyForNull ? null : new ReadOnlyCollection<T>(iEnumerable.ToIList(emptyForNull));
     }
