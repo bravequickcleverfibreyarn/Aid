@@ -9,3 +9,5 @@
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0021:Use block body for constructors", Justification = "Why?", Scope = "type", Target = "~T:Test.CollectionExtensionTests.TestList`1")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0022:Use block body for methods", Justification = "Why?", Scope = "type", Target = "~T:Test.CollectionExtensionTests.TestList`1")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0039:Use local function", Justification = "<Pending>", Scope = "member", Target = "~M:Test.CollectionExtensionTests.ToReadOnlyDictionary_ProvidedWithValidCollection_ReturnsRODict")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0039:Use local function", Justification = "<Pending>", Scope = "member", Target = "~M:Test.CollectionExtensionTests.ToReadOnlyDictionary_ProvidedWithValidCollection_ReturnsRODict(System.Nullable{System.Boolean})")]

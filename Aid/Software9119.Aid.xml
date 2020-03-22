@@ -4,11 +4,10 @@
         <name>Software9119.Aid</name>
     </assembly>
     <members>
-        <member name="M:Software9119.Aid.Collection.CollectionExtension.ToIList``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+        <member name="M:Software9119.Aid.Collection.CollectionExtension.ToIList``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Useful for <see cref="M:System.Collections.ObjectModel.ReadOnlyCollection`1.#ctor(System.Collections.Generic.IList{`0})"/> constructor.
-            </summary>    
-            <param name="emptyForNull">Choses null or empty collection for null source.</param>
+            </summary>
         </member>
         <member name="M:Software9119.Aid.Collection.CollectionExtension.ToReadOnlyCollection``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
             <summary>
