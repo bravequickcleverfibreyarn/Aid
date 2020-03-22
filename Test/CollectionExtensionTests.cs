@@ -41,11 +41,27 @@ namespace Test
     }
 
     [TestMethod]
-    public void ToIList_ProvidedWithNull_ThrowsArgumentNullException()
+    public void ToIList_ProvidedWithNullExpectsDefault_ReturnsNull()
     {
-      Assert.ThrowsException<ArgumentNullException>(() => ((IEnumerable<int>)null).ToIList());
+      Assert.IsNull(((IEnumerable<int>)null).ToIList());
     }
 
+
+    [TestMethod]
+    public void ToIList_ProvidedWithNullExpectsNull_ReturnsNull()
+    {
+      Assert.IsNull(((IEnumerable<int>)null).ToIList(false));
+    }
+
+    [TestMethod]
+    public void ToIList_ProvidedWithNullExpectsEmpty_ReturnsEmptyArray()
+    {
+      IList<int> iListOfInt = ((IEnumerable<int>)null).ToIList(true);
+
+      Assert.IsTrue(iListOfInt is int[]);
+      Assert.IsTrue(iListOfInt.Count == 0);
+    }
+    
     // ToReadOnlyCollection tests
 
     [TestMethod]

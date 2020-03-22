@@ -11,9 +11,10 @@
     <Description>Aide types.</Description>
     <AssemblyName>Software9119.Aid</AssemblyName>
     <Product>Aid</Product>
-    <Version>2.0.7</Version>
-    <AssemblyVersion>2.0.7.0</AssemblyVersion>
+    <Version>2.1.7</Version>
+    <AssemblyVersion>2.1.7.0</AssemblyVersion>
     <LangVersion>7.3</LangVersion>
+    <FileVersion>2.1.7.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
