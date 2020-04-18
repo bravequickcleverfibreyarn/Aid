@@ -16,5 +16,15 @@
             </summary>
             <param name="emptyForNull">Choses null or empty collection for null source.</param>
         </member>
+        <member name="M:Software9119.Aid.Object.ObjectAid.NullOrResult``2(``0,System.Func{``0,``1})">
+            <summary>
+            Null for null <paramref name="obj"/>. Else <paramref name="func"/> result on <paramref name="obj"/>.
+            </summary>        
+        </member>
+        <member name="M:Software9119.Aid.Object.ObjectAid.NullableOrResult``2(``0,System.Func{``0,``1})">
+            <summary>
+            Nullable <typeparamref name="U"/>> for null <paramref name="obj"/>. Else <paramref name="func"/> result on <paramref name="obj"/>.
+            </summary>  
+        </member>
     </members>
 </doc>
