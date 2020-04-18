@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Software9119.Aid.Object;
 
-namespace Test
+namespace Test.Object
 {
   [TestClass]
   public class ObjectExtensionsTests

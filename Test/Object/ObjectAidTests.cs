@@ -2,7 +2,7 @@
 using Software9119.Aid.Object;
 using System;
 
-namespace Test
+namespace Test.Object
 {
   [TestClass]
   public class ObjectAidTests
