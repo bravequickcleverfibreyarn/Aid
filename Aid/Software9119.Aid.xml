@@ -16,22 +16,22 @@
             </summary>
             <param name="emptyForNull">Choses null or empty collection for null source.</param>
         </member>
-        <member name="M:Software9119.Aid.Object.ObjectAid.NullOrResult``2(``0,System.Func{``0,``1})">
+        <member name="M:Software9119.Aid.Object.ObjectAide.NullOrResult``2(``0,System.Func{``0,``1})">
             <summary>
             Null for null <paramref name="obj"/>. Else <paramref name="func"/> result on <paramref name="obj"/>.
             </summary>        
         </member>
-        <member name="M:Software9119.Aid.Object.ObjectAid.NullableOrResult``2(``0,System.Func{``0,``1})">
+        <member name="M:Software9119.Aid.Object.ObjectAide.NullableOrResult``2(``0,System.Func{``0,``1})">
             <summary>
             Nullable <typeparamref name="U"/>> for null <paramref name="obj"/>. Else <paramref name="func"/> result on <paramref name="obj"/>.
             </summary>  
         </member>
-        <member name="M:Software9119.Aid.Parallel.AsyncAid.#ctor">
+        <member name="M:Software9119.Aid.Parallel.AsyncAide.#ctor">
             <summary>
             Will use <see cref="F:System.Threading.Tasks.TaskCreationOptions.None"/>, <see cref="F:System.Threading.Tasks.TaskContinuationOptions.None"/> and <see cref="P:System.Threading.Tasks.TaskScheduler.Default"/>.
             </summary>
         </member>
-        <member name="M:Software9119.Aid.Parallel.AsyncAid.#ctor(System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)">
+        <member name="M:Software9119.Aid.Parallel.AsyncAide.#ctor(System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)">
             <summary>
             .ctor with settings for <see cref="T:System.Threading.Tasks.TaskFactory"/>.
             </summary>    

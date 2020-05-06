@@ -12,14 +12,14 @@ namespace Test.Parallel
     [TestMethod]
     public void RunSync_ExecuteVoidTask_MethodExecuted()
     {      
-      new AsyncAid().RunSync(ExtendStringWithB);
+      new AsyncAide().RunSync(ExtendStringWithB);
       Assert.AreEqual("ab", testStr);
     }
 
     [TestMethod]
     public void RunSyncT_ExecuteTTask_MethodExecuted()
     { 
-      Assert.AreEqual("ab", new AsyncAid().RunSync(() => StringExtendedWithB("a")));
+      Assert.AreEqual("ab", new AsyncAide().RunSync(() => StringExtendedWithB("a")));
     }
 
     async Task ExtendStringWithB() => await Task.Run(() => testStr += 'b');

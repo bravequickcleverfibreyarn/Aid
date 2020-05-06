@@ -12,7 +12,7 @@ namespace Test.Object
     [TestMethod]
     public void NullOrResult_NullProvided_ReturnsNull()
     {
-      Assert.IsNull(ObjectAid.NullOrResult(null, (string str) => str));
+      Assert.IsNull(ObjectAide.NullOrResult(null, (string str) => str));
     }
 
     [TestMethod]
@@ -21,13 +21,13 @@ namespace Test.Object
       Func<string, string> func = str => str.Substring(2);
       string value = "XYZ";
 
-      Assert.AreEqual(func(value), ObjectAid.NullOrResult(value, func));
+      Assert.AreEqual(func(value), ObjectAide.NullOrResult(value, func));
     }
 
     [TestMethod]
     public void NullOrResult_NullFunc_ThrowsArgNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>(() => ObjectAid.NullOrResult<string, object>(null, null));
+      Assert.ThrowsException<ArgumentNullException>(() => ObjectAide.NullOrResult<string, object>(null, null));
     }
 
     // NullableOrResult tests
@@ -35,7 +35,7 @@ namespace Test.Object
     [TestMethod]
     public void NullableOrResult_NullProvided_ReturnsNullable()
     {
-      Assert.AreEqual(default(char?), ObjectAid.NullableOrResult(null, (string str) => str[0]));
+      Assert.AreEqual(default(char?), ObjectAide.NullableOrResult(null, (string str) => str[0]));
     }
 
     [TestMethod]
@@ -44,13 +44,13 @@ namespace Test.Object
       Func<string, char> func = str => str[1];
       string value = "XYZ";
 
-      Assert.AreEqual(func(value), ObjectAid.NullableOrResult(value, func));
+      Assert.AreEqual(func(value), ObjectAide.NullableOrResult(value, func));
     }
 
     [TestMethod]
     public void NullableOrResult_NullFunc_ThrowsArgNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>(() => ObjectAid.NullableOrResult<string, int>(null, null));
+      Assert.ThrowsException<ArgumentNullException>(() => ObjectAide.NullableOrResult<string, int>(null, null));
     }
   }
 }

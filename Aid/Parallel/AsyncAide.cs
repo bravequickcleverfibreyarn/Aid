@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Software9119.Aid.Parallel
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-  public class AsyncAid
+  public class AsyncAide
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
     readonly TaskFactory factory;    
@@ -13,14 +13,14 @@ namespace Software9119.Aid.Parallel
     /// <summary>
     /// Will use <see cref="TaskCreationOptions.None"/>, <see cref="TaskContinuationOptions.None"/> and <see cref="TaskScheduler.Default"/>.
     /// </summary>
-    public AsyncAid() : this(TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default)
+    public AsyncAide() : this(TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default)
     {
     }
 
     /// <summary>
     /// .ctor with settings for <see cref="TaskFactory"/>.
     /// </summary>    
-    public AsyncAid(TaskCreationOptions creationOptions, TaskContinuationOptions continuationOptions, TaskScheduler scheduler)
+    public AsyncAide(TaskCreationOptions creationOptions, TaskContinuationOptions continuationOptions, TaskScheduler scheduler)
     {
       factory = new TaskFactory(CancellationToken.None, creationOptions, continuationOptions, scheduler);      
     }
