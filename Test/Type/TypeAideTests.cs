@@ -50,7 +50,7 @@ namespace Test.Type
     [TestMethod]
     public void IsUnManaged_ProvidedValue_ComplyExpectation(System.Type type, bool expectation)
     {
-      Assert.AreEqual(new TypeAide().IsUnManaged(type), expectation);
+      Assert.AreEqual(expectation, new TypeAide().IsUnManaged(type));
     }
 
     struct Constructed1<T>
@@ -99,6 +99,8 @@ namespace Test.Type
       cache[typeOfInt] = false;
 
       Assert.IsFalse(typeAide.IsUnManaged(typeOfInt));
+
+      cache.Clear();
     }
   }
 }
