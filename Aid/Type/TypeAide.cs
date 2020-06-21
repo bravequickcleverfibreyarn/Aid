@@ -13,7 +13,7 @@ namespace Software9119.Aid.Type
     static readonly ConcurrentDictionary<sType, bool> cache = new ConcurrentDictionary<sType, bool>();
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-    public bool IsUnManaged(sType type)
+    static public bool IsUnManaged(sType type)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {      
       if (cache.ContainsKey(type))

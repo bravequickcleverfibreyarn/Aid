@@ -50,7 +50,7 @@ namespace Test.Type
     [TestMethod]
     public void IsUnManaged_ProvidedValue_ComplyExpectation(System.Type type, bool expectation)
     {
-      Assert.AreEqual(expectation, new TypeAide().IsUnManaged(type));
+      Assert.AreEqual(expectation, TypeAide.IsUnManaged(type));
     }
 
     struct Constructed1<T>
@@ -80,25 +80,22 @@ namespace Test.Type
 
     [TestMethod]
     public void IsUnManaged_CacheTest_CashIsUsed()
-    {
-      var typeAide = new TypeAide();
-
-      var cache = (ConcurrentDictionary<System.Type, bool>)typeAide
-        .GetType()
+    {      
+      var cache = (ConcurrentDictionary<System.Type, bool>)typeof(TypeAide)        
         .GetField("cache", BindingFlags.NonPublic | BindingFlags.Static)
-        .GetValue(typeAide);
+        .GetValue(null);
 
       Assert.IsTrue(cache.Count == 0);
 
       System.Type typeOfInt = typeof(int);
 
-      Assert.IsTrue(typeAide.IsUnManaged(typeOfInt));
+      Assert.IsTrue(TypeAide.IsUnManaged(typeOfInt));
 
       Assert.IsTrue(cache.ContainsKey(typeOfInt));
 
       cache[typeOfInt] = false;
 
-      Assert.IsFalse(typeAide.IsUnManaged(typeOfInt));
+      Assert.IsFalse(TypeAide.IsUnManaged(typeOfInt));
 
       cache.Clear();
     }
