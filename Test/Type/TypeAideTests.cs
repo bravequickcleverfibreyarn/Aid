@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Software9119.Aid.Type;
+using System;
 using System.Collections.Concurrent;
 using System.Reflection;
 
 namespace Test.Type
-{  
+{
   [TestClass]
   public class TypeAideTests
   {
@@ -21,7 +22,7 @@ namespace Test.Type
     [DataRow(typeof(double), true)]
     [DataRow(typeof(decimal), true)]
     [DataRow(typeof(bool), true)]
-    [DataRow(typeof(Enum), true)]    
+    [DataRow(typeof(Enum), true)]
     [DataRow(typeof(UnManaged), true)]
     [DataRow(typeof(Constructed1<int>), true)]
     [DataRow(typeof(Constructed1<object>), true)]
@@ -42,11 +43,11 @@ namespace Test.Type
     [DataRow(typeof(double*), true)]
     [DataRow(typeof(decimal*), true)]
     [DataRow(typeof(bool*), true)]
-    [DataRow(typeof(Enum*), true)]    
+    [DataRow(typeof(Enum*), true)]
     [DataRow(typeof(UnManaged*), true)]
     [DataRow(typeof(Constructed1<int>*), true)]
     [DataRow(typeof(Constructed1<object>*), true)]
-    [DataRow(typeof(Constructed2<int>*), true)]    
+    [DataRow(typeof(Constructed2<int>*), true)]
     [TestMethod]
     public void IsUnManaged_ProvidedValue_ComplyExpectation(System.Type type, bool expectation)
     {
@@ -54,23 +55,23 @@ namespace Test.Type
     }
 
     struct Constructed1<T>
-    {      
+    {
     }
 
 #pragma warning disable CS0169
-    
+
     struct Constructed2<T>
-    {      
+    {
       T t;
     }
 
     struct Managed
-    {      
+    {
       string str;
     }
-    
+
     struct UnManaged
-    {      
+    {
       int i;
     }
 #pragma warning restore CS0169
@@ -80,8 +81,8 @@ namespace Test.Type
 
     [TestMethod]
     public void IsUnManaged_CacheTest_CashIsUsed()
-    {      
-      var cache = (ConcurrentDictionary<System.Type, bool>)typeof(TypeAide)        
+    {
+      var cache = (ConcurrentDictionary<System.Type, bool>)typeof(TypeAide)
         .GetField("cache", BindingFlags.NonPublic | BindingFlags.Static)
         .GetValue(null);
 
@@ -98,6 +99,15 @@ namespace Test.Type
       Assert.IsFalse(TypeAide.IsUnManaged(typeOfInt));
 
       cache.Clear();
+    }
+
+    [TestMethod]
+    public void IsUnManaged_NullType_ThrowsArgumentNullException()
+    {
+      Assert.ThrowsException<ArgumentNullException>
+      (
+        () => TypeAide.IsUnManaged(null)
+      );
     }
   }
 }

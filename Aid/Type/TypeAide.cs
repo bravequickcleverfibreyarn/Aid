@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 
@@ -7,7 +8,7 @@ using sType = System.Type;
 namespace Software9119.Aid.Type
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-  public class TypeAide
+  static public class TypeAide
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
     static readonly ConcurrentDictionary<sType, bool> cache = new ConcurrentDictionary<sType, bool>();
@@ -16,6 +17,11 @@ namespace Software9119.Aid.Type
     static public bool IsUnManaged(sType type)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {      
+      if (type == null)
+      {
+        throw new ArgumentNullException(nameof(type));
+      }
+
       if (cache.ContainsKey(type))
       {
         return cache[type];

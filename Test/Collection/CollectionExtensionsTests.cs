@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 namespace Test.Collection
 {
   [TestClass]
-  public class CollectionExtensionTests
+  public class CollectionExtensionsTests
   {
     // ToIList tests
 
@@ -223,7 +223,7 @@ namespace Test.Collection
     class TestCollection<T> : ICollection<T>
     {
 
-      private List<T> source;
+      private readonly List<T> source;
       public TestCollection(List<T> source) => this.source = source;
 
       public int Count => source.Count;

@@ -8,7 +8,7 @@ namespace Software9119.Aid.Collection
 {
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-  static public class CollectionExtension
+  static public partial class CollectionExtensions
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
 
@@ -21,7 +21,7 @@ namespace Software9119.Aid.Collection
     {
       if (iEnumerable == null)
       {
-        return emptyForNull ? new T[0] : null;
+        return emptyForNull ? Array.Empty<T>() : null;
       }
 
       if (iEnumerable is IList<T> iList)
@@ -36,7 +36,7 @@ namespace Software9119.Aid.Collection
 
       return iEnumerable.ToList();
     }
-    
+
     /// <summary>
     /// The <see cref="ReadOnlyCollection{T}"/> from any enumerable.
     /// </summary>
@@ -44,10 +44,12 @@ namespace Software9119.Aid.Collection
     static public ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> iEnumerable, bool emptyForNull = false)
     {
       return iEnumerable.IsNull() && !emptyForNull
-        ? null          
+        ? null
         : new ReadOnlyCollection<T>(iEnumerable.ToIList(emptyForNull));
     }
 #pragma warning restore CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
+
+    #region ReadOnylDictionary
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     static public ReadOnlyDictionary<Key, Source> ToReadOnlyDictionary<Source, Key>(
@@ -82,5 +84,7 @@ namespace Software9119.Aid.Collection
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
     static ReadOnlyDictionary<Key, Value> EmptyRODict<Key, Value>() => new ReadOnlyDictionary<Key, Value>(new Dictionary<Key, Value> { });
+
+    #endregion
   }
 }
