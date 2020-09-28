@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Software9119.Aid.Object;
+
 using System;
 
 namespace Test.Object
@@ -51,6 +53,19 @@ namespace Test.Object
     public void NullableOrResult_NullFunc_ThrowsArgNullException()
     {
       Assert.ThrowsException<ArgumentNullException>(() => ObjectAide.NullableOrResult<string, int>(null, null));
+    }
+
+    [TestMethod]
+    [DataRow(null, null, false)]
+    [DataRow(1, null, false)]
+    [DataRow(null, 1, false)]
+    [DataRow(1L, 1, false)]
+    [DataRow(1L, 1L, true)]
+    [DataRow("Test", "Failure", false)]
+    [DataRow("Test", "Test", true)]
+    public void Matches_TestDataProvided_MeetExpectations(object left, object right, bool expectation)
+    {
+      Assert.AreEqual(expectation, ObjectAide.Matches(left, right));
     }
   }
 }
