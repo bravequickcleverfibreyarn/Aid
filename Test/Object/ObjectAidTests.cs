@@ -9,6 +9,8 @@ namespace Test.Object
   [TestClass]
   public class ObjectAidTests
   {
+    #region Null/nullable or result
+
     // NullOrResult tests
 
     [TestMethod]
@@ -48,12 +50,16 @@ namespace Test.Object
 
       Assert.AreEqual(func(value), ObjectAide.NullableOrResult(value, func));
     }
-
+    
     [TestMethod]
     public void NullableOrResult_NullFunc_ThrowsArgNullException()
     {
       Assert.ThrowsException<ArgumentNullException>(() => ObjectAide.NullableOrResult<string, int>(null, null));
     }
+
+    #endregion
+
+    #region Matches
 
     [TestMethod]
     [DataRow(null, null, false)]
@@ -67,5 +73,7 @@ namespace Test.Object
     {
       Assert.AreEqual(expectation, ObjectAide.Matches(left, right));
     }
+
+    #endregion
   }
 }

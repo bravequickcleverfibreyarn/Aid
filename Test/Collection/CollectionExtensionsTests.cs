@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
 
+using _Enumerable = System.Linq.Enumerable;
+
 namespace Test.Collection
 {
   [TestClass]
@@ -16,7 +18,7 @@ namespace Test.Collection
     [TestMethod]
     public void ToIList_ProvidedWithIEnumerableOfT_ReturnsListOfT()
     {
-      IEnumerable<char> iEnumerableOfChar = Enumerable.Range(65, 91).Select(n => (char)n);
+      IEnumerable<char> iEnumerableOfChar = _Enumerable.Range(65, 91).Select(n => (char)n);
       IList<char> iListOfChar = iEnumerableOfChar.ToIList();
 
       Assert.IsTrue(iListOfChar is List<char>);
@@ -25,7 +27,7 @@ namespace Test.Collection
     [TestMethod]
     public void ToIList_ProvidedWithICollectionOfT_ReturnsTArray()
     {
-      IEnumerable<int> iEnumerableOfInt = new TestCollection<int>(Enumerable.Range(65, 91).ToList());
+      IEnumerable<int> iEnumerableOfInt = new TestCollection<int>(_Enumerable.Range(65, 91).ToList());
       IList<int> iListOfInt = iEnumerableOfInt.ToIList();
 
       Assert.IsTrue(iListOfInt is int[]);
@@ -86,7 +88,7 @@ namespace Test.Collection
     [TestMethod]
     public void ToReadOnlyCollection_ProvidedWithIEnumerableOfT_ReturnsROCollection()
     {
-      IEnumerable<int> enumerable = Enumerable.Range(0, 2);
+      IEnumerable<int> enumerable = _Enumerable.Range(0, 2);
       Assert.IsTrue(enumerable.SequenceEqual(enumerable.ToReadOnlyCollection(true)));
     }
 

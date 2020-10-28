@@ -10,6 +10,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 
+using _Enumerable = System.Linq.Enumerable;
+
 namespace Test.Collection
 {
   [TestClass]
@@ -413,7 +415,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ArrayOfT_SomeEnumerable_ReturnsToCollection()
     {
-      IEnumerable<int> collection = Enumerable.Range(1, 3);
+      IEnumerable<int> collection = _Enumerable.Range(1, 3);
       var result = collection.AsOrTo<int, int[]>();
 
       Assert.AreEqual(typeof(int[]), result.GetType());

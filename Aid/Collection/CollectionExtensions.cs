@@ -16,7 +16,7 @@ namespace Software9119.Aid.Collection
     /// <summary>
     /// Useful for <see cref="ReadOnlyCollection{T}.ReadOnlyCollection(IList{T})"/> constructor.
     /// </summary>
-    /// <param name="emptyForNull">Choses null or empty collection for null source.</param>
+    /// <param name="emptyForNull">Chooses null or empty collection for null source.</param>
     static public IList<T> ToIList<T>(this IEnumerable<T> iEnumerable, bool emptyForNull = default)
     {
       if (iEnumerable == null)
