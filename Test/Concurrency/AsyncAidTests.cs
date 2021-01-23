@@ -1,8 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Software9119.Aid.Parallel;
+
+using Software9119.Aid.Concurrency;
+
 using System.Threading.Tasks;
 
-namespace Test.Parallel
+namespace Test.Concurrency
 {
   [TestClass]
   public class AsyncAidTests
@@ -11,14 +13,14 @@ namespace Test.Parallel
     string testStr = "a";
     [TestMethod]
     public void RunSync_ExecuteVoidTask_MethodExecuted()
-    {      
+    {
       new AsyncAide().RunSync(ExtendStringWithB);
       Assert.AreEqual("ab", testStr);
     }
 
     [TestMethod]
     public void RunSyncT_ExecuteTTask_MethodExecuted()
-    { 
+    {
       Assert.AreEqual("ab", new AsyncAide().RunSync(() => StringExtendedWithB("a")));
     }
 

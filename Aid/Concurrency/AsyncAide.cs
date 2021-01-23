@@ -1,14 +1,15 @@
-﻿using System;
+﻿
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Software9119.Aid.Parallel
+namespace Software9119.Aid.Concurrency
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   public class AsyncAide
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
-    readonly TaskFactory factory;    
+    readonly TaskFactory factory;
 
     /// <summary>
     /// Will use <see cref="TaskCreationOptions.None"/>, <see cref="TaskContinuationOptions.None"/> and <see cref="TaskScheduler.Default"/>.
@@ -22,7 +23,7 @@ namespace Software9119.Aid.Parallel
     /// </summary>    
     public AsyncAide(TaskCreationOptions creationOptions, TaskContinuationOptions continuationOptions, TaskScheduler scheduler)
     {
-      factory = new TaskFactory(CancellationToken.None, creationOptions, continuationOptions, scheduler);      
+      factory = new TaskFactory(CancellationToken.None, creationOptions, continuationOptions, scheduler);
     }
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member

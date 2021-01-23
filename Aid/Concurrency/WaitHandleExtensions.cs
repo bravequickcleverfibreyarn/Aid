@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Software9119.Aid.Parallel
+namespace Software9119.Aid.Concurrency
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   static public class WaitHandleExtensions

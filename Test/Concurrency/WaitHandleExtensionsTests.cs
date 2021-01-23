@@ -1,14 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Software9119.Aid.Parallel;
+using Software9119.Aid.Concurrency;
 
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Test.Parallel
+namespace Test.Concurrency
 {
   [TestClass]
-  public class WaitHandleExtensionsTests  
+  public class WaitHandleExtensionsTests
   {
     [TestMethod]
     public void WaitOneAsync_NormalUsageEventNotSet_AsyncBehavior()
@@ -35,7 +35,7 @@ namespace Test.Parallel
       Task<bool> task = eventWaitHandle.WaitOneAsync();
       Thread.Sleep(400);
 
-      Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);     
+      Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
       Assert.AreEqual(true, task.Result);
     }
 
