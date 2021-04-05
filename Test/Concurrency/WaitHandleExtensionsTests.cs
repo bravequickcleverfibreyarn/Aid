@@ -25,6 +25,8 @@ namespace Test.Concurrency
 
       Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
       Assert.AreEqual(true, task.Result);
+
+      eventWaitHandle.Dispose();
     }
 
     [TestMethod]
@@ -37,6 +39,8 @@ namespace Test.Concurrency
 
       Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
       Assert.AreEqual(true, task.Result);
+
+      eventWaitHandle.Dispose();
     }
 
     [TestMethod]
@@ -57,6 +61,8 @@ namespace Test.Concurrency
           Assert.AreEqual(false, task.Result);
         }
       );
+
+      eventWaitHandle.Dispose();
     }
 
     [TestMethod]
@@ -69,6 +75,8 @@ namespace Test.Concurrency
 
       Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
       Assert.AreEqual(true, task.Result);
+
+      eventWaitHandle.Dispose();
     }
 
   }

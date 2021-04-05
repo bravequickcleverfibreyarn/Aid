@@ -7,6 +7,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -727,7 +728,7 @@ namespace Test.Collection
       }
       catch (Exception e)
       {
-        Assert.IsTrue(e.Message.StartsWith("Unsupported type – "));
+        Assert.IsTrue(e.Message.StartsWith("Unsupported type – ", StringComparison.Ordinal));
       }
     }
 

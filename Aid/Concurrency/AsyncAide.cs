@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@ namespace Software9119.Aid.Concurrency
     }
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+    [SuppressMessage("Reliability", "CA2008:Do not create tasks without passing a TaskScheduler", Justification = "")]
     public void RunSync(Func<Task> func)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
@@ -38,6 +40,7 @@ namespace Software9119.Aid.Concurrency
     }
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+    [SuppressMessage("Reliability", "CA2008:Do not create tasks without passing a TaskScheduler", Justification = "")]
     public T RunSync<T>(Func<Task<T>> func)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {

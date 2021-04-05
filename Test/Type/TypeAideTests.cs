@@ -1,12 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Software9119.Aid.Type;
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Test.Type
 {
   [TestClass]
+  [SuppressMessage("Performance", "CA1823:Avoid unused private fields", Justification = "")]
   public class TypeAideTests
   {
     [DataRow(typeof(sbyte), true)]
@@ -86,7 +88,7 @@ namespace Test.Type
         .GetField("cache", BindingFlags.NonPublic | BindingFlags.Static)
         .GetValue(null);
 
-      Assert.IsTrue(cache.Count == 0);
+      Assert.IsTrue(cache.IsEmpty);
 
       System.Type typeOfInt = typeof(int);
 

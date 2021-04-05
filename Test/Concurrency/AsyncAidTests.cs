@@ -25,6 +25,6 @@ namespace Test.Concurrency
     }
 
     async Task ExtendStringWithB() => await Task.Run(() => testStr += 'b');
-    async Task<string> StringExtendedWithB(string str) => await Task.Run(() => str + 'b');
+    static async Task<string> StringExtendedWithB(string str) => await Task.Run(() => str + 'b');
   }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Software9119.Aid.Enumerable;
+
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -45,7 +47,7 @@ namespace Software9119.Aid.Collection
         typeof(ObservableCollection<T>),
       };
 
-      IReadOnlyList<System.Type> supportedTypes = immutableTypesMap.Keys.Concat(otherTypers).ToList();
+      IReadOnlyList<System.Type> supportedTypes = immutableTypesMap.Keys.Concat(otherTypers).ToArray(immutableTypesMap.Count + otherTypers.Count);
       otherTypers = null;
 
       System.Type typeOfU = typeof(U);
