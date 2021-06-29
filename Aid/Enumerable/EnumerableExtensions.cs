@@ -10,7 +10,7 @@ namespace Software9119.Aid.Enumerable
   {
 
     /// <summary>
-    ///Can bypass T[] widening during enumeration if its size is known beforehand.
+    /// Can bypass T[] (<seealso cref="Array"/>) widening during enumeration and final fit-size copying if its size is known beforehand.
     /// </summary>       
     static public T[] ToArray<T>(this IEnumerable<T> iEnumerable, int length)
     {
