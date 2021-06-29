@@ -7,15 +7,11 @@ using sType = System.Type;
 
 namespace Software9119.Aid.Type
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   static public class TypeAide
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
-    static readonly ConcurrentDictionary<sType, bool> cache = new ConcurrentDictionary<sType, bool>();
+    static readonly ConcurrentDictionary<sType, bool> cache = new();
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     static public bool IsUnManaged(sType type)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {      
       if (type == null)
       {

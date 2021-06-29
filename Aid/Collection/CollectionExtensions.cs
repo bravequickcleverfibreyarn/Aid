@@ -6,10 +6,7 @@ using System.Linq;
 
 namespace Software9119.Aid.Collection
 {
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   static public partial class CollectionExtensions
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
 
 #pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
@@ -51,7 +48,6 @@ namespace Software9119.Aid.Collection
 
     #region ReadOnylDictionary
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     static public ReadOnlyDictionary<Key, Source> ToReadOnlyDictionary<Source, Key>(
       this IEnumerable<Source> iEnumerable,
       Func<Source, Key> keySelector,
@@ -81,9 +77,8 @@ namespace Software9119.Aid.Collection
           : null
         : new ReadOnlyDictionary<Key, Value>(dict);
     }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
-    static ReadOnlyDictionary<Key, Value> EmptyRODict<Key, Value>() => new ReadOnlyDictionary<Key, Value>(new Dictionary<Key, Value> { });
+    static ReadOnlyDictionary<Key, Value> EmptyRODict<Key, Value>() => new(new Dictionary<Key, Value> { });
 
     #endregion
   }

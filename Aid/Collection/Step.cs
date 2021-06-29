@@ -130,9 +130,7 @@ namespace Software9119.Aid.Collection
     [MethodImpl (MethodImplOptions.AggressiveInlining)]
     public bool Equals ( Step other ) => this == other;
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public override int GetHashCode () => $"{Size}{value}".GetHashCode (StringComparison.InvariantCultureIgnoreCase);
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
     /// <summary>
     /// Equality operator.

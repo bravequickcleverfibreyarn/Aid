@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Software9119.Aid.Concurrency
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   public class AsyncAide
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
     readonly TaskFactory factory;
 
@@ -27,10 +25,8 @@ namespace Software9119.Aid.Concurrency
       factory = new TaskFactory(CancellationToken.None, creationOptions, continuationOptions, scheduler);
     }
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     [SuppressMessage("Reliability", "CA2008:Do not create tasks without passing a TaskScheduler", Justification = "")]
     public void RunSync(Func<Task> func)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
       factory
         .StartNew(func)
@@ -39,10 +35,8 @@ namespace Software9119.Aid.Concurrency
         .GetResult();
     }
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     [SuppressMessage("Reliability", "CA2008:Do not create tasks without passing a TaskScheduler", Justification = "")]
     public T RunSync<T>(Func<Task<T>> func)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
       return factory
         .StartNew(func)

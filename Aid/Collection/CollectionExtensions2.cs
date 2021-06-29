@@ -9,9 +9,7 @@ using System.Linq;
 
 namespace Software9119.Aid.Collection
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   static public partial class CollectionExtensions
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
   {
     /// <summary>
     /// Helper to cast <see cref="IEnumerable{T}"/> or create collection from <see cref="IEnumerable{T}"/>.

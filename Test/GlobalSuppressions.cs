@@ -24,3 +24,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE0039:Use local function", Justification = "<Pending>", Scope = "member", Target = "~M:Test.Enumerable.EnumerableExtensionsTests.ToDictionary_SomeEnumerableKeySelector_ReturnsDictionary")]
 [assembly: SuppressMessage("Reliability", "CA2008:Do not create tasks without passing a TaskScheduler", Justification = "<Pending>", Scope = "member", Target = "~M:Test.Concurrency.WaitHandleExtensionsTests.WaitOneAsync_TimeoutSetEventNotSet_TimedOut")]
 [assembly: SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>", Scope = "member", Target = "~M:Test.Collection.CollectionExtensionsTests2.AsOrTo_UnsupportedDestinationType_ThrowsInvalidOperationException")]
+[assembly: SuppressMessage ("Naming", "CA1716:Identifiers should not match keywords", Justification = "<Pending>", Scope = "namespace", Target = "~N:Test.Object")]
