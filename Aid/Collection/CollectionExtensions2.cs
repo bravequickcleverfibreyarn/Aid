@@ -1,4 +1,5 @@
 ﻿using Software9119.Aid.Enumerable;
+using Software9119.Aid.Exception;
 
 using System;
 using System.Collections.Concurrent;
@@ -11,80 +12,120 @@ namespace Software9119.Aid.Collection
 {
   static public partial class CollectionExtensions
   {
-    /// <summary>
-    /// Helper to cast <see cref="IEnumerable{T}"/> or create collection from <see cref="IEnumerable{T}"/>.
+    static readonly ConcurrentDictionary<System.Type, System.Type[]> otherTypes      = new();
+    static readonly ConcurrentDictionary<System.Type, System.Type[]> immutableTypes  = new();
+
+
+    /// <summary>    
+    /// Helper to cast <paramref name="enumerable"/> or create collection from <paramref name="enumerable"/>.
     /// </summary>
-    /// <typeparam name="T"><see cref="IEnumerable{T}"/> T type.</typeparam>
+    /// <typeparam name="T"><paramref name="enumerable"/> items type.</typeparam>
     /// <typeparam name="U">Desired as/to type.</typeparam>    
-    static public U AsOrTo<T, U>(this IEnumerable<T> enumerable, bool emptyForNull = false)
+    /// <exception cref="ArgumentRangeException{T}">When <typeparamref name="U"/> is unsupported creation type.</exception>   
+    /// <exception cref="ArgumentNullException">When <paramref name="enumerable"/> is <see langword="null"/> and <paramref name="emptyForNull"/> is <see langword="false"/>.</exception>
+    /// <remarks>Supports all types for casting.</remarks>    
+#nullable enable
+    static public U AsOrTo<T, U> ( this IEnumerable<T> enumerable, bool emptyForNull = false )
     {
-
-      IReadOnlyDictionary<System.Type, Func<IEnumerable<T>, object>> immutableTypesMap = new Dictionary<System.Type, Func<IEnumerable<T>, object>>
+      if (enumerable is null)
       {
-        [typeof(ImmutableArray<T>)] = __enumerable => ImmutableArray.CreateRange(__enumerable),
-        [typeof(ImmutableHashSet<T>)] = __enumerable => ImmutableHashSet.CreateRange(__enumerable),
-        [typeof(ImmutableList<T>)] = __enumerable => ImmutableList.CreateRange(__enumerable),
-        [typeof(ImmutableQueue<T>)] = __enumerable => ImmutableQueue.CreateRange(__enumerable),
-        [typeof(ImmutableSortedSet<T>)] = __enumerable => ImmutableSortedSet.CreateRange(__enumerable),
-        [typeof(ImmutableStack<T>)] = __enumerable => ImmutableStack.CreateRange(__enumerable),
-      };
-
-      IReadOnlyList<System.Type> otherTypers = new[]
-      {
-        typeof(T[]),
-        typeof(List<T>),
-        typeof(HashSet<T>),
-        typeof(LinkedList<T>),
-        typeof(Queue<T>),
-        typeof(SortedSet<T>),
-        typeof(Stack<T>),
-        typeof(ConcurrentBag<T>),
-        typeof(ConcurrentQueue<T>),
-        typeof(ConcurrentStack<T>),
-        typeof(Collection<T>),
-        typeof(ObservableCollection<T>),
-      };
-
-      IReadOnlyList<System.Type> supportedTypes = immutableTypesMap.Keys.Concat(otherTypers).ToArray(immutableTypesMap.Count + otherTypers.Count);
-      otherTypers = null;
+        if (emptyForNull)
+          enumerable = Array.Empty<T> ();
+        else
+          throw new ArgumentNullException (nameof (enumerable));
+      }
 
       System.Type typeOfU = typeof(U);
-      if (!supportedTypes.Contains(typeOfU))
+      if (enumerable!.GetType () == typeOfU)
+        return (U) enumerable;
+
+      if (typeof (T []) == typeOfU)
+        return (U) (object) enumerable.ToArray ();
+
+      System.Type typeOfT = typeof (T);
+      System.Type[] otherTypers = OtherTypes<T> (typeOfT);
+      if (otherTypers.Contains (typeOfU))
+        return (U) Activator.CreateInstance (typeOfU, enumerable)!;
+
+      System.Type[] immutableTypes = ImmutableTypes<T> (typeOfT);
+      if (immutableTypes.Contains (typeOfU))
       {
-        throw new InvalidOperationException($"Unsupported type – {typeOfU.AssemblyQualifiedName}!");
+        object instance = null!;
+        if (immutableTypes [0] == typeOfU)
+          instance = ImmutableArray.CreateRange (enumerable);
+        else if (immutableTypes [1] == typeOfU)
+          instance = ImmutableHashSet.CreateRange (enumerable);
+        else if (immutableTypes [2] == typeOfU)
+          instance = ImmutableList.CreateRange (enumerable);
+        else if (immutableTypes [3] == typeOfU)
+          instance = ImmutableQueue.CreateRange (enumerable);
+        else if (immutableTypes [4] == typeOfU)
+          instance = ImmutableSortedSet.CreateRange (enumerable);
+        else if (immutableTypes [5] == typeOfU)
+          instance = ImmutableStack.CreateRange (enumerable);
+
+        return (U) instance;
       }
 
-      if (enumerable != null && enumerable.GetType() == typeOfU)
-      {
-        return (U)enumerable;
-      }
+      throw new ArgumentRangeException<System.Type>
+      (
+        paramName: null,
+        actualValue: typeOfU,
+        specialInfo: typeOfU.FullName,
+        inclusiveMin: null,
+        inclusiveMax: null,
+        valid: immutableTypes.Concat (otherTypers).ToArray (immutableTypes.Length + otherTypers.Length),
+        invalid: null
+      );
+    }
+#nullable restore
 
-      object instance = null; // Just initialization, no logic.
+    static System.Type [] OtherTypes<T> ( System.Type typeOfT )
+    {
+      if (otherTypes.TryGetValue (typeOfT, out System.Type [] values))
+        return values;
 
-      if (enumerable == null && emptyForNull)
+      values = new []
       {
-        enumerable = Array.Empty<T>();
+          typeof(T[]),
+          typeof(List<T>),
+          typeof(HashSet<T>),
+          typeof(LinkedList<T>),
+          typeof(Queue<T>),
+          typeof(SortedSet<T>),
+          typeof(Stack<T>),
+          typeof(ConcurrentBag<T>),
+          typeof(ConcurrentQueue<T>),
+          typeof(ConcurrentStack<T>),
+          typeof(Collection<T>),
+          typeof(ObservableCollection<T>),
+      };
 
-        if (typeOfU == typeof(T[]))
-        {
-          return (U)enumerable;
-        }
-      }
+      _ = otherTypes.TryAdd (typeOfT, values);
 
-      if (immutableTypesMap.TryGetValue(typeOfU, out Func<IEnumerable<T>, object> creator))
-      {
-        instance = creator(enumerable);
-      }
-      else if (typeOfU == typeof(T[]))
-      {
-        return (U)(object)enumerable.ToArray();
-      }
-      else
-      {
-        instance = Activator.CreateInstance(typeOfU, enumerable);
-      }
+      return values;
+    }
 
-      return (U)instance;
+    static System.Type [] ImmutableTypes<T> ( System.Type typeOfT )
+    {
+
+      if (immutableTypes.TryGetValue (typeOfT, out System.Type [] values))
+        return values;
+
+      values = new []
+      {
+        typeof (ImmutableArray<T>),
+        typeof (ImmutableHashSet<T>),
+        typeof (ImmutableList<T>),
+        typeof (ImmutableQueue<T>),
+        typeof (ImmutableSortedSet<T>),
+        typeof (ImmutableStack<T>),
+      };
+
+      _ = immutableTypes.TryAdd (typeOfT, values);
+
+      return values;
     }
   }
 }
+

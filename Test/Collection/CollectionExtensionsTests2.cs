@@ -1,15 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Software9119.Aid.Collection;
+using Software9119.Aid.Exception;
 
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
-using System.Reflection;
 
 using _Enumerable = System.Linq.Enumerable;
 
@@ -79,7 +78,7 @@ namespace Test.Collection
     {
       DateTime [] result = ((DateTime[])null).AsOrTo<DateTime, DateTime[]>(emptyForNull: true);
 
-      Assert.AreEqual(typeof(DateTime[]), result.GetType());
+      Assert.AreEqual(typeof(DateTime []), result.GetType());
       Assert.AreEqual(0, result.Length);
     }
 
@@ -187,164 +186,11 @@ namespace Test.Collection
     #region NullEnumerable_Throws
 
     [TestMethod]
-    public void AsOrTo_ImmutableArray_NullEnumerable_ThrowsArgumentNullException()
+    public void AsOrTo_Any_NullEnumerable_ThrowsArgumentNullException()
     {
       _ = Assert.ThrowsException<ArgumentNullException>
-      (
-        () => ((int[])null).AsOrTo<int, ImmutableArray<int>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ImmutableHashSet_NullEnumerable_ThrowsArgumentNullException()
-    {
-      _ = Assert.ThrowsException<ArgumentNullException>
-      (
-        () => ((string[])null).AsOrTo<string, ImmutableHashSet<string>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ImmutableList_NullEnumerable_ThrowsArgumentNullException()
-    {
-      _ = Assert.ThrowsException<ArgumentNullException>
-      (
-        () => ((string[])null).AsOrTo<string, ImmutableList<string>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ImmutableQueue_NullEnumerable_ThrowsArgumentNullException()
-    {
-      _ = Assert.ThrowsException<ArgumentNullException>
-      (
-        () => ((string[])null).AsOrTo<string, ImmutableQueue<string>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ImmutableSortedSet_NullEnumerable_ThrowsArgumentNullException()
-    {
-      _ = Assert.ThrowsException<ArgumentNullException>
-      (
-        () => ((string[])null).AsOrTo<string, ImmutableSortedSet<string>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ImmutableStack_NullEnumerable_ThrowsArgumentNullException()
-    {
-      _ = Assert.ThrowsException<ArgumentNullException>
-      (
-        () => ((string[])null).AsOrTo<string, ImmutableStack<string>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ArrayOfT_NullEnumerable_ThrowsArgumentNullException()
-    {
-      _ = Assert.ThrowsException<ArgumentNullException>
-      (
-        () => ((DateTime[])null).AsOrTo<DateTime, DateTime[]>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_List_NullEnumerable_ThrowsAmbiguousMatchException()
-    {
-      _ = Assert.ThrowsException<AmbiguousMatchException>
-      (
-        () => ((DateTime[])null).AsOrTo<DateTime, List<DateTime>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_HashSet_NullEnumerable_ThrowsAmbiguousMatchException()
-    {
-      _ = Assert.ThrowsException<AmbiguousMatchException>
-      (
-        () => ((TimeSpan[])null).AsOrTo<TimeSpan, HashSet<TimeSpan>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_LinkedList_NullEnumerable_ThrowsTargetInvocationException()
-    {
-      _ = Assert.ThrowsException<TargetInvocationException>
-      (
-        () => ((TimeSpan[])null).AsOrTo<TimeSpan, LinkedList<TimeSpan>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_QueueOfT_NullEnumerable_ThrowsAmbiguousMatchException()
-    {
-      _ = Assert.ThrowsException<AmbiguousMatchException>
-      (
-        () => ((TimeSpan[])null).AsOrTo<TimeSpan, Queue<TimeSpan>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_SortedSet_NullEnumerable_ThrowsAmbiguousMatchException()
-    {
-      _ = Assert.ThrowsException<AmbiguousMatchException>
-      (
-        () => ((TimeSpan[])null).AsOrTo<TimeSpan, SortedSet<TimeSpan>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_StackOfT_NullEnumerable_ThrowsAmbiguousMatchException()
-    {
-      _ = Assert.ThrowsException<AmbiguousMatchException>
-      (
-        () => ((long[])null).AsOrTo<long, Stack<long>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ConcurrentBag_NullEnumerable_ThrowsTargetInvocationException()
-    {
-      _ = Assert.ThrowsException<TargetInvocationException>
-      (
-        () => ((long[])null).AsOrTo<long, ConcurrentBag<long>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ConcurrentQueue_NullEnumerable_ThrowsTargetInvocationException()
-    {
-      _ = Assert.ThrowsException<TargetInvocationException>
-      (
-        () => ((long[])null).AsOrTo<long, ConcurrentQueue<long>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ConcurrentStack_NullEnumerable_ThrowsTargetInvocationException()
-    {
-      _ = Assert.ThrowsException<TargetInvocationException>
-      (
-        () => ((decimal[])null).AsOrTo<decimal, ConcurrentStack<decimal>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_Collection_NullEnumerable_ThrowsTargetInvocationException()
-    {
-      _ = Assert.ThrowsException<TargetInvocationException>
-      (
-        () => ((decimal[])null).AsOrTo<decimal, Collection<decimal>>()
-      );
-    }
-
-    [TestMethod]
-    public void AsOrTo_ObservableCollection_NullEnumerable_ThrowsTargetInvocationException()
-    {
-      _ = Assert.ThrowsException<TargetInvocationException>
-      (
-        () => ((decimal[])null).AsOrTo<decimal, ObservableCollection<decimal>>()
+     (
+       () =>((object []) null).AsOrTo<object, object>()
       );
     }
 
@@ -408,7 +254,7 @@ namespace Test.Collection
       int [] collection = new[] { 1, 2, 3 };
       ImmutableStack<int> result = collection.AsOrTo<int, ImmutableStack<int>>();
 
-      Assert.AreEqual(typeof(ImmutableStack<int>), result.GetType());      
+      Assert.AreEqual(typeof(ImmutableStack<int>), result.GetType());
       Assert.IsTrue(collection.All(x => result.Contains(x)));
       Assert.IsTrue(result.All(x => collection.Contains(x)));
     }
@@ -419,7 +265,7 @@ namespace Test.Collection
       IEnumerable<int> collection = _Enumerable.Range(1, 3);
       int [] result = collection.AsOrTo<int, int[]>();
 
-      Assert.AreEqual(typeof(int[]), result.GetType());
+      Assert.AreEqual(typeof(int []), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
     }
 
@@ -549,12 +395,12 @@ namespace Test.Collection
 
       Assert.AreEqual(sameEnumerable, result);
       Assert.AreEqual(sameEnumerable.Count(), result.Length);
-      Assert.IsTrue(sameEnumerable.All(x => result.Contains(x)));      
+      Assert.IsTrue(sameEnumerable.All(x => result.Contains(x)));
     }
 
     [TestMethod]
     public void AsOrTo_ImmutableHashSet_SameEnumerable_ReturnsCast()
-    {      
+    {
       IEnumerable<int> sameEnumerable = ImmutableHashSet.CreateRange(new[] { 1, 2, 3 });
 
       ImmutableHashSet<int> result = sameEnumerable.AsOrTo<int, ImmutableHashSet<int>>();
@@ -564,7 +410,7 @@ namespace Test.Collection
 
     [TestMethod]
     public void AsOrTo_ImmutableList_SameEnumerable_ReturnsCast()
-    {      
+    {
       IEnumerable<int> sameEnumerable = ImmutableList.CreateRange(new[] { 1, 2, 3 });
 
       ImmutableList<int> result = sameEnumerable.AsOrTo<int, ImmutableList<int>>();
@@ -574,7 +420,7 @@ namespace Test.Collection
 
     [TestMethod]
     public void AsOrTo_ImmutableQueue_SameEnumerable_ReturnsCast()
-    {      
+    {
       IEnumerable<int> sameEnumerable = ImmutableQueue.CreateRange(new[] { 1, 2, 3 });
 
       ImmutableQueue<int> result = sameEnumerable.AsOrTo<int, ImmutableQueue<int>>();
@@ -584,7 +430,7 @@ namespace Test.Collection
 
     [TestMethod]
     public void AsOrTo_ImmutableSortedSet_SameEnumerable_ReturnsCast()
-    {      
+    {
       IEnumerable<int> sameEnumerable = ImmutableSortedSet.CreateRange(new[] { 1, 2, 3 });
 
       ImmutableSortedSet<int> result = sameEnumerable.AsOrTo<int, ImmutableSortedSet<int>>();
@@ -594,7 +440,7 @@ namespace Test.Collection
 
     [TestMethod]
     public void AsOrTo_ImmutableStack_SameEnumerable_ReturnsCast()
-    {     
+    {
       IEnumerable<int> sameEnumerable = ImmutableStack.CreateRange(new[] { 1, 2, 3 });
 
       ImmutableStack<int> result = sameEnumerable.AsOrTo<int, ImmutableStack<int>>();
@@ -714,24 +560,53 @@ namespace Test.Collection
 
     #region UnsupportedDestinationType
 
+
     [TestMethod]
-    public void AsOrTo_UnsupportedDestinationType_ThrowsInvalidOperationException()
+    public void AsOrTo_UnsupportedDestinationTypeButItIsJustCast_CastProvided ()
+    {
+      IEnumerable<int> collection = new ReadOnlyCollection<int>(new [] { 1, 2, 3 });
+      ReadOnlyCollection<int> cast = collection.AsOrTo<int, ReadOnlyCollection<int>>();
+            
+      Assert.AreSame (collection, cast);
+    }
+
+    [TestMethod]
+    public void AsOrTo_UnsupportedDestinationType_ThrowsArgumentRangeException ()
     {
       IEnumerable<int> collection = new[] { 1, 2, 3 };
       Action asOrToAction = () => collection.AsOrTo<int, ReadOnlyCollection<int>>();
 
-      _ = Assert.ThrowsException<InvalidOperationException>(asOrToAction);
-
-      try
-      {
-        asOrToAction();
-      }
-      catch (Exception e)
-      {
-        Assert.IsTrue(e.Message.StartsWith("Unsupported type – ", StringComparison.Ordinal));
-      }
+      ArgumentRangeException<System.Type> are = Assert.ThrowsException<ArgumentRangeException<System.Type>>(asOrToAction);
+            
+      Assert.AreEqual(typeof (ReadOnlyCollection<int>), are.ActualValue);
+      Assert.IsTrue
+      (
+        are.Valid.SequenceEqual
+        (
+          new []
+          {
+            typeof(ImmutableArray<int>),
+            typeof(ImmutableHashSet<int>),
+            typeof(ImmutableList<int>),
+            typeof(ImmutableQueue<int>),
+            typeof(ImmutableSortedSet<int>),
+            typeof(ImmutableStack<int>),
+            typeof(int []),
+            typeof(List<int>),
+            typeof(HashSet<int>),
+            typeof(LinkedList<int>),
+            typeof(Queue<int>),
+            typeof(SortedSet<int>),
+            typeof(Stack<int>),
+            typeof(ConcurrentBag<int>),
+            typeof(ConcurrentQueue<int>),
+            typeof(ConcurrentStack<int>),
+            typeof(Collection<int>),
+            typeof(ObservableCollection<int>),
+          }
+        )
+      );      
     }
-
     #endregion
   }
 }

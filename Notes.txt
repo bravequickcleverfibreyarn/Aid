@@ -1,0 +1,3 @@
+﻿• validate global suppression
+• create tests for ArgumentRangeException
+• port WaitHandleExtensions from Lockers and remove it there
