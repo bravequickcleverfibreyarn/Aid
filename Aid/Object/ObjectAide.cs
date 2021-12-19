@@ -39,7 +39,7 @@ namespace Software9119.Aid.Object
     /// <summary>
     /// Provides null safe equality check.
     /// </summary>    
-    /// <returns>False if either of params is null. Otherwise result of <see cref="System.Object.Equals(object, object)"/>.</returns>
+    /// <returns>False if either of params is null. Otherwise result of <see cref="object.Equals(object, object)"/>.</returns>
     static public bool Matches(object one, object another) => one != null && Equals(one, another);
   }
 }

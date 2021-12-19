@@ -291,8 +291,8 @@ namespace Test.Collection
     [TestMethod]
     public void ZeroSizedStep_ThrowArgumentOutOfRangeException ()
     {
-      Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0, default));
-      Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0));
+      _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0, default));
+      _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0));
     }
 
     [TestMethod]

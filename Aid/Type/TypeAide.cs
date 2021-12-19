@@ -39,7 +39,7 @@ namespace Software9119.Aid.Type
           .All(fi => IsUnManaged(fi.FieldType));
       }
 
-      cache.TryAdd(type, unmanaged);
+      _ = cache.TryAdd(type, unmanaged);
       return unmanaged;
     }
   }

@@ -26,7 +26,7 @@ namespace Software9119.Aid.Concurrency
           timeoutMilisecs.Value,
           true);
 
-      tcs.Task.ContinueWith(_ => rwh.Unregister(null), TaskScheduler.Default);
+      _ = tcs.Task.ContinueWith(_ => rwh.Unregister(null), TaskScheduler.Default);
       return tcs.Task;
     }
   }

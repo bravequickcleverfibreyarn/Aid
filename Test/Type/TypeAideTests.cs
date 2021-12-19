@@ -106,7 +106,7 @@ namespace Test.Type
     [TestMethod]
     public void IsUnManaged_NullType_ThrowsArgumentNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>
+      _ = Assert.ThrowsException<ArgumentNullException>
       (
         () => TypeAide.IsUnManaged(null)
       );

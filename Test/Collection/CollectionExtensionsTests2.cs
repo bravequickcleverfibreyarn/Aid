@@ -23,7 +23,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableArray_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((int[])null).AsOrTo<int, ImmutableArray<int>>(emptyForNull: true);
+      ImmutableArray<int> result = ((int[])null).AsOrTo<int, ImmutableArray<int>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ImmutableArray<int>), result.GetType());
       Assert.IsTrue(result.IsEmpty);
@@ -32,7 +32,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableHashSet_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((string[])null).AsOrTo<string, ImmutableHashSet<string>>(emptyForNull: true);
+      ImmutableHashSet<string> result = ((string[])null).AsOrTo<string, ImmutableHashSet<string>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ImmutableHashSet<string>), result.GetType());
       Assert.IsTrue(result.IsEmpty);
@@ -41,7 +41,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableList_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((string[])null).AsOrTo<string, ImmutableList<string>>(emptyForNull: true);
+      ImmutableList<string> result = ((string[])null).AsOrTo<string, ImmutableList<string>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ImmutableList<string>), result.GetType());
       Assert.IsTrue(result.IsEmpty);
@@ -50,7 +50,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableQueue_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((string[])null).AsOrTo<string, ImmutableQueue<string>>(emptyForNull: true);
+      ImmutableQueue<string> result = ((string[])null).AsOrTo<string, ImmutableQueue<string>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ImmutableQueue<string>), result.GetType());
       Assert.IsTrue(result.IsEmpty);
@@ -59,7 +59,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableSortedSet_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((string[])null).AsOrTo<string, ImmutableSortedSet<string>>(emptyForNull: true);
+      ImmutableSortedSet<string> result = ((string[])null).AsOrTo<string, ImmutableSortedSet<string>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ImmutableSortedSet<string>), result.GetType());
       Assert.IsTrue(result.IsEmpty);
@@ -68,7 +68,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableStack_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((string[])null).AsOrTo<string, ImmutableStack<string>>(emptyForNull: true);
+      ImmutableStack<string> result = ((string[])null).AsOrTo<string, ImmutableStack<string>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ImmutableStack<string>), result.GetType());
       Assert.IsTrue(result.IsEmpty);
@@ -77,7 +77,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ArrayOfT_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((DateTime[])null).AsOrTo<DateTime, DateTime[]>(emptyForNull: true);
+      DateTime [] result = ((DateTime[])null).AsOrTo<DateTime, DateTime[]>(emptyForNull: true);
 
       Assert.AreEqual(typeof(DateTime[]), result.GetType());
       Assert.AreEqual(0, result.Length);
@@ -86,7 +86,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_List_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((DateTime[])null).AsOrTo<DateTime, List<DateTime>>(emptyForNull: true);
+      List<DateTime> result = ((DateTime[])null).AsOrTo<DateTime, List<DateTime>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(List<DateTime>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -95,7 +95,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_HashSet_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((TimeSpan[])null).AsOrTo<TimeSpan, HashSet<TimeSpan>>(emptyForNull: true);
+      HashSet<TimeSpan> result = ((TimeSpan[])null).AsOrTo<TimeSpan, HashSet<TimeSpan>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(HashSet<TimeSpan>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -104,7 +104,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_LinkedList_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((TimeSpan[])null).AsOrTo<TimeSpan, LinkedList<TimeSpan>>(emptyForNull: true);
+      LinkedList<TimeSpan> result = ((TimeSpan[])null).AsOrTo<TimeSpan, LinkedList<TimeSpan>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(LinkedList<TimeSpan>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -113,7 +113,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_QueueOfT_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((TimeSpan[])null).AsOrTo<TimeSpan, Queue<TimeSpan>>(emptyForNull: true);
+      Queue<TimeSpan> result = ((TimeSpan[])null).AsOrTo<TimeSpan, Queue<TimeSpan>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(Queue<TimeSpan>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -122,7 +122,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_SortedSet_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((TimeSpan[])null).AsOrTo<TimeSpan, SortedSet<TimeSpan>>(emptyForNull: true);
+      SortedSet<TimeSpan> result = ((TimeSpan[])null).AsOrTo<TimeSpan, SortedSet<TimeSpan>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(SortedSet<TimeSpan>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -131,7 +131,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_StackOfT_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((long[])null).AsOrTo<long, Stack<long>>(emptyForNull: true);
+      Stack<long> result = ((long[])null).AsOrTo<long, Stack<long>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(Stack<long>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -140,7 +140,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentBag_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((long[])null).AsOrTo<long, ConcurrentBag<long>>(emptyForNull: true);
+      ConcurrentBag<long> result = ((long[])null).AsOrTo<long, ConcurrentBag<long>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ConcurrentBag<long>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -149,7 +149,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentQueue_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((long[])null).AsOrTo<long, ConcurrentQueue<long>>(emptyForNull: true);
+      ConcurrentQueue<long> result = ((long[])null).AsOrTo<long, ConcurrentQueue<long>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ConcurrentQueue<long>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -158,7 +158,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentStack_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((decimal[])null).AsOrTo<decimal, ConcurrentStack<decimal>>(emptyForNull: true);
+      ConcurrentStack<decimal> result = ((decimal[])null).AsOrTo<decimal, ConcurrentStack<decimal>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ConcurrentStack<decimal>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -167,7 +167,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_Collection_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((decimal[])null).AsOrTo<decimal, Collection<decimal>>(emptyForNull: true);
+      Collection<decimal> result = ((decimal[])null).AsOrTo<decimal, Collection<decimal>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(Collection<decimal>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -176,7 +176,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ObservableCollection_NullEnumerableWantsEmpty_GetsEmpty()
     {
-      var result = ((decimal[])null).AsOrTo<decimal, ObservableCollection<decimal>>(emptyForNull: true);
+      ObservableCollection<decimal> result = ((decimal[])null).AsOrTo<decimal, ObservableCollection<decimal>>(emptyForNull: true);
 
       Assert.AreEqual(typeof(ObservableCollection<decimal>), result.GetType());
       Assert.AreEqual(0, result.Count);
@@ -189,7 +189,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableArray_NullEnumerable_ThrowsArgumentNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>
+      _ = Assert.ThrowsException<ArgumentNullException>
       (
         () => ((int[])null).AsOrTo<int, ImmutableArray<int>>()
       );
@@ -198,7 +198,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableHashSet_NullEnumerable_ThrowsArgumentNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>
+      _ = Assert.ThrowsException<ArgumentNullException>
       (
         () => ((string[])null).AsOrTo<string, ImmutableHashSet<string>>()
       );
@@ -207,7 +207,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableList_NullEnumerable_ThrowsArgumentNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>
+      _ = Assert.ThrowsException<ArgumentNullException>
       (
         () => ((string[])null).AsOrTo<string, ImmutableList<string>>()
       );
@@ -216,7 +216,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableQueue_NullEnumerable_ThrowsArgumentNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>
+      _ = Assert.ThrowsException<ArgumentNullException>
       (
         () => ((string[])null).AsOrTo<string, ImmutableQueue<string>>()
       );
@@ -225,7 +225,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableSortedSet_NullEnumerable_ThrowsArgumentNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>
+      _ = Assert.ThrowsException<ArgumentNullException>
       (
         () => ((string[])null).AsOrTo<string, ImmutableSortedSet<string>>()
       );
@@ -234,7 +234,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableStack_NullEnumerable_ThrowsArgumentNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>
+      _ = Assert.ThrowsException<ArgumentNullException>
       (
         () => ((string[])null).AsOrTo<string, ImmutableStack<string>>()
       );
@@ -243,7 +243,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ArrayOfT_NullEnumerable_ThrowsArgumentNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>
+      _ = Assert.ThrowsException<ArgumentNullException>
       (
         () => ((DateTime[])null).AsOrTo<DateTime, DateTime[]>()
       );
@@ -252,7 +252,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_List_NullEnumerable_ThrowsAmbiguousMatchException()
     {
-      Assert.ThrowsException<AmbiguousMatchException>
+      _ = Assert.ThrowsException<AmbiguousMatchException>
       (
         () => ((DateTime[])null).AsOrTo<DateTime, List<DateTime>>()
       );
@@ -261,7 +261,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_HashSet_NullEnumerable_ThrowsAmbiguousMatchException()
     {
-      Assert.ThrowsException<AmbiguousMatchException>
+      _ = Assert.ThrowsException<AmbiguousMatchException>
       (
         () => ((TimeSpan[])null).AsOrTo<TimeSpan, HashSet<TimeSpan>>()
       );
@@ -270,7 +270,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_LinkedList_NullEnumerable_ThrowsTargetInvocationException()
     {
-      Assert.ThrowsException<TargetInvocationException>
+      _ = Assert.ThrowsException<TargetInvocationException>
       (
         () => ((TimeSpan[])null).AsOrTo<TimeSpan, LinkedList<TimeSpan>>()
       );
@@ -279,7 +279,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_QueueOfT_NullEnumerable_ThrowsAmbiguousMatchException()
     {
-      Assert.ThrowsException<AmbiguousMatchException>
+      _ = Assert.ThrowsException<AmbiguousMatchException>
       (
         () => ((TimeSpan[])null).AsOrTo<TimeSpan, Queue<TimeSpan>>()
       );
@@ -288,7 +288,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_SortedSet_NullEnumerable_ThrowsAmbiguousMatchException()
     {
-      Assert.ThrowsException<AmbiguousMatchException>
+      _ = Assert.ThrowsException<AmbiguousMatchException>
       (
         () => ((TimeSpan[])null).AsOrTo<TimeSpan, SortedSet<TimeSpan>>()
       );
@@ -297,7 +297,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_StackOfT_NullEnumerable_ThrowsAmbiguousMatchException()
     {
-      Assert.ThrowsException<AmbiguousMatchException>
+      _ = Assert.ThrowsException<AmbiguousMatchException>
       (
         () => ((long[])null).AsOrTo<long, Stack<long>>()
       );
@@ -306,7 +306,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentBag_NullEnumerable_ThrowsTargetInvocationException()
     {
-      Assert.ThrowsException<TargetInvocationException>
+      _ = Assert.ThrowsException<TargetInvocationException>
       (
         () => ((long[])null).AsOrTo<long, ConcurrentBag<long>>()
       );
@@ -315,7 +315,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentQueue_NullEnumerable_ThrowsTargetInvocationException()
     {
-      Assert.ThrowsException<TargetInvocationException>
+      _ = Assert.ThrowsException<TargetInvocationException>
       (
         () => ((long[])null).AsOrTo<long, ConcurrentQueue<long>>()
       );
@@ -324,7 +324,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentStack_NullEnumerable_ThrowsTargetInvocationException()
     {
-      Assert.ThrowsException<TargetInvocationException>
+      _ = Assert.ThrowsException<TargetInvocationException>
       (
         () => ((decimal[])null).AsOrTo<decimal, ConcurrentStack<decimal>>()
       );
@@ -333,7 +333,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_Collection_NullEnumerable_ThrowsTargetInvocationException()
     {
-      Assert.ThrowsException<TargetInvocationException>
+      _ = Assert.ThrowsException<TargetInvocationException>
       (
         () => ((decimal[])null).AsOrTo<decimal, Collection<decimal>>()
       );
@@ -342,7 +342,7 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ObservableCollection_NullEnumerable_ThrowsTargetInvocationException()
     {
-      Assert.ThrowsException<TargetInvocationException>
+      _ = Assert.ThrowsException<TargetInvocationException>
       (
         () => ((decimal[])null).AsOrTo<decimal, ObservableCollection<decimal>>()
       );
@@ -355,8 +355,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableArray_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ImmutableArray<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ImmutableArray<int> result = collection.AsOrTo<int, ImmutableArray<int>>();
 
       Assert.AreEqual(typeof(ImmutableArray<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -365,8 +365,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableHashSet_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ImmutableHashSet<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ImmutableHashSet<int> result = collection.AsOrTo<int, ImmutableHashSet<int>>();
 
       Assert.AreEqual(typeof(ImmutableHashSet<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -375,8 +375,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableList_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ImmutableList<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ImmutableList<int> result = collection.AsOrTo<int, ImmutableList<int>>();
 
       Assert.AreEqual(typeof(ImmutableList<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -385,8 +385,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableQueue_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ImmutableQueue<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ImmutableQueue<int> result = collection.AsOrTo<int, ImmutableQueue<int>>();
 
       Assert.AreEqual(typeof(ImmutableQueue<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -395,8 +395,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableSortedSet_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ImmutableSortedSet<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ImmutableSortedSet<int> result = collection.AsOrTo<int, ImmutableSortedSet<int>>();
 
       Assert.AreEqual(typeof(ImmutableSortedSet<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -405,8 +405,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ImmutableStack_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ImmutableStack<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ImmutableStack<int> result = collection.AsOrTo<int, ImmutableStack<int>>();
 
       Assert.AreEqual(typeof(ImmutableStack<int>), result.GetType());      
       Assert.IsTrue(collection.All(x => result.Contains(x)));
@@ -417,7 +417,7 @@ namespace Test.Collection
     public void AsOrTo_ArrayOfT_SomeEnumerable_ReturnsToCollection()
     {
       IEnumerable<int> collection = _Enumerable.Range(1, 3);
-      var result = collection.AsOrTo<int, int[]>();
+      int [] result = collection.AsOrTo<int, int[]>();
 
       Assert.AreEqual(typeof(int[]), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -426,8 +426,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_List_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, List<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      List<int> result = collection.AsOrTo<int, List<int>>();
 
       Assert.AreEqual(typeof(List<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -436,8 +436,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_HashSet_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, HashSet<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      HashSet<int> result = collection.AsOrTo<int, HashSet<int>>();
 
       Assert.AreEqual(typeof(HashSet<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -446,8 +446,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_LinkedList_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, LinkedList<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      LinkedList<int> result = collection.AsOrTo<int, LinkedList<int>>();
 
       Assert.AreEqual(typeof(LinkedList<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -456,8 +456,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_QueueOfT_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, Queue<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      Queue<int> result = collection.AsOrTo<int, Queue<int>>();
 
       Assert.AreEqual(typeof(Queue<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -466,8 +466,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_SortedSet_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, SortedSet<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      SortedSet<int> result = collection.AsOrTo<int, SortedSet<int>>();
 
       Assert.AreEqual(typeof(SortedSet<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -476,8 +476,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_StackOfT_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, Stack<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      Stack<int> result = collection.AsOrTo<int, Stack<int>>();
 
       Assert.AreEqual(typeof(Stack<int>), result.GetType());
       Assert.AreEqual(collection.Length, result.Count);
@@ -487,8 +487,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentBag_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ConcurrentBag<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ConcurrentBag<int> result = collection.AsOrTo<int, ConcurrentBag<int>>();
 
       Assert.AreEqual(typeof(ConcurrentBag<int>), result.GetType());
       Assert.AreEqual(collection.Length, result.Count);
@@ -498,8 +498,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentQueue_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ConcurrentQueue<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ConcurrentQueue<int> result = collection.AsOrTo<int, ConcurrentQueue<int>>();
 
       Assert.AreEqual(typeof(ConcurrentQueue<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -508,8 +508,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ConcurrentStack_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ConcurrentStack<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ConcurrentStack<int> result = collection.AsOrTo<int, ConcurrentStack<int>>();
 
       Assert.AreEqual(typeof(ConcurrentStack<int>), result.GetType());
       Assert.AreEqual(collection.Length, result.Count);
@@ -519,8 +519,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_Collection_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, Collection<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      Collection<int> result = collection.AsOrTo<int, Collection<int>>();
 
       Assert.AreEqual(typeof(Collection<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -529,8 +529,8 @@ namespace Test.Collection
     [TestMethod]
     public void AsOrTo_ObservableCollection_SomeEnumerable_ReturnsToCollection()
     {
-      var collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, ObservableCollection<int>>();
+      int [] collection = new[] { 1, 2, 3 };
+      ObservableCollection<int> result = collection.AsOrTo<int, ObservableCollection<int>>();
 
       Assert.AreEqual(typeof(ObservableCollection<int>), result.GetType());
       Assert.IsTrue(collection.SequenceEqual(result));
@@ -545,7 +545,7 @@ namespace Test.Collection
     {
       IEnumerable<int> sameEnumerable = ImmutableArray.CreateRange(new[] { 1, 2, 3 });
 
-      var result = sameEnumerable.AsOrTo<int, ImmutableArray<int>>();
+      ImmutableArray<int> result = sameEnumerable.AsOrTo<int, ImmutableArray<int>>();
 
       Assert.AreEqual(sameEnumerable, result);
       Assert.AreEqual(sameEnumerable.Count(), result.Length);
@@ -557,7 +557,7 @@ namespace Test.Collection
     {      
       IEnumerable<int> sameEnumerable = ImmutableHashSet.CreateRange(new[] { 1, 2, 3 });
 
-      var result = sameEnumerable.AsOrTo<int, ImmutableHashSet<int>>();
+      ImmutableHashSet<int> result = sameEnumerable.AsOrTo<int, ImmutableHashSet<int>>();
 
       Assert.IsTrue(ReferenceEquals(sameEnumerable, result));
     }
@@ -567,7 +567,7 @@ namespace Test.Collection
     {      
       IEnumerable<int> sameEnumerable = ImmutableList.CreateRange(new[] { 1, 2, 3 });
 
-      var result = sameEnumerable.AsOrTo<int, ImmutableList<int>>();
+      ImmutableList<int> result = sameEnumerable.AsOrTo<int, ImmutableList<int>>();
 
       Assert.IsTrue(ReferenceEquals(sameEnumerable, result));
     }
@@ -577,7 +577,7 @@ namespace Test.Collection
     {      
       IEnumerable<int> sameEnumerable = ImmutableQueue.CreateRange(new[] { 1, 2, 3 });
 
-      var result = sameEnumerable.AsOrTo<int, ImmutableQueue<int>>();
+      ImmutableQueue<int> result = sameEnumerable.AsOrTo<int, ImmutableQueue<int>>();
 
       Assert.IsTrue(ReferenceEquals(sameEnumerable, result));
     }
@@ -587,7 +587,7 @@ namespace Test.Collection
     {      
       IEnumerable<int> sameEnumerable = ImmutableSortedSet.CreateRange(new[] { 1, 2, 3 });
 
-      var result = sameEnumerable.AsOrTo<int, ImmutableSortedSet<int>>();
+      ImmutableSortedSet<int> result = sameEnumerable.AsOrTo<int, ImmutableSortedSet<int>>();
 
       Assert.IsTrue(ReferenceEquals(sameEnumerable, result));
     }
@@ -597,7 +597,7 @@ namespace Test.Collection
     {     
       IEnumerable<int> sameEnumerable = ImmutableStack.CreateRange(new[] { 1, 2, 3 });
 
-      var result = sameEnumerable.AsOrTo<int, ImmutableStack<int>>();
+      ImmutableStack<int> result = sameEnumerable.AsOrTo<int, ImmutableStack<int>>();
 
       Assert.IsTrue(ReferenceEquals(sameEnumerable, result));
     }
@@ -606,7 +606,7 @@ namespace Test.Collection
     public void AsOrTo_ArrayOfT_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new[] { 1, 2, 3 };
-      var result = collection.AsOrTo<int, int[]>();
+      int [] result = collection.AsOrTo<int, int[]>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -615,7 +615,7 @@ namespace Test.Collection
     public void AsOrTo_List_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new List<int> { 1, 2, 3 };
-      var result = collection.AsOrTo<int, List<int>>();
+      List<int> result = collection.AsOrTo<int, List<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -624,7 +624,7 @@ namespace Test.Collection
     public void AsOrTo_HashSet_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new HashSet<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, HashSet<int>>();
+      HashSet<int> result = collection.AsOrTo<int, HashSet<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -633,7 +633,7 @@ namespace Test.Collection
     public void AsOrTo_LinkedList_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new LinkedList<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, LinkedList<int>>();
+      LinkedList<int> result = collection.AsOrTo<int, LinkedList<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -642,7 +642,7 @@ namespace Test.Collection
     public void AsOrTo_QueueOfT_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new Queue<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, Queue<int>>();
+      Queue<int> result = collection.AsOrTo<int, Queue<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -651,7 +651,7 @@ namespace Test.Collection
     public void AsOrTo_SortedSet_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new SortedSet<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, SortedSet<int>>();
+      SortedSet<int> result = collection.AsOrTo<int, SortedSet<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -660,7 +660,7 @@ namespace Test.Collection
     public void AsOrTo_StackOfT_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new Stack<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, Stack<int>>();
+      Stack<int> result = collection.AsOrTo<int, Stack<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -669,7 +669,7 @@ namespace Test.Collection
     public void AsOrTo_ConcurrentBag_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new ConcurrentBag<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, ConcurrentBag<int>>();
+      ConcurrentBag<int> result = collection.AsOrTo<int, ConcurrentBag<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -678,7 +678,7 @@ namespace Test.Collection
     public void AsOrTo_ConcurrentQueue_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new ConcurrentQueue<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, ConcurrentQueue<int>>();
+      ConcurrentQueue<int> result = collection.AsOrTo<int, ConcurrentQueue<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -687,7 +687,7 @@ namespace Test.Collection
     public void AsOrTo_ConcurrentStack_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new ConcurrentStack<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, ConcurrentStack<int>>();
+      ConcurrentStack<int> result = collection.AsOrTo<int, ConcurrentStack<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -696,7 +696,7 @@ namespace Test.Collection
     public void AsOrTo_Collection_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new Collection<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, Collection<int>>();
+      Collection<int> result = collection.AsOrTo<int, Collection<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -705,7 +705,7 @@ namespace Test.Collection
     public void AsOrTo_ObservableCollection_SameEnumerable_ReturnsCast()
     {
       IEnumerable<int> collection = new ObservableCollection<int>(new[] { 1, 2, 3 });
-      var result = collection.AsOrTo<int, ObservableCollection<int>>();
+      ObservableCollection<int> result = collection.AsOrTo<int, ObservableCollection<int>>();
 
       Assert.IsTrue(ReferenceEquals(collection, result));
     }
@@ -720,7 +720,7 @@ namespace Test.Collection
       IEnumerable<int> collection = new[] { 1, 2, 3 };
       Action asOrToAction = () => collection.AsOrTo<int, ReadOnlyCollection<int>>();
 
-      Assert.ThrowsException<InvalidOperationException>(asOrToAction);
+      _ = Assert.ThrowsException<InvalidOperationException>(asOrToAction);
 
       try
       {

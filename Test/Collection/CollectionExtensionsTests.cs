@@ -225,7 +225,7 @@ namespace Test.Collection
     class TestCollection<T> : ICollection<T>
     {
 
-      private readonly List<T> source;
+      readonly List<T> source;
       public TestCollection(List<T> source) => this.source = source;
 
       public int Count => source.Count;

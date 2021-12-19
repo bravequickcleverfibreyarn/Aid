@@ -20,7 +20,7 @@ namespace Test.Concurrency
 
       Assert.AreEqual(TaskStatus.WaitingForActivation, task.Status);
 
-      ((EventWaitHandle)eventWaitHandle).Set();
+      _ = ((EventWaitHandle)eventWaitHandle).Set();
       Thread.Sleep(400);
 
       Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
@@ -53,7 +53,7 @@ namespace Test.Concurrency
 
       Assert.AreEqual(TaskStatus.WaitingForActivation, task.Status);
 
-      task.ContinueWith
+      _ = task.ContinueWith
       (
         x =>
         {

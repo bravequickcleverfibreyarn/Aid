@@ -31,7 +31,7 @@ namespace Test.Object
     [TestMethod]
     public void NullOrResult_NullFunc_ThrowsArgNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>(() => ObjectAide.NullOrResult<string, object>(null, null));
+      _ = Assert.ThrowsException<ArgumentNullException>(() => ObjectAide.NullOrResult<string, object>(null, null));
     }
 
     // NullableOrResult tests
@@ -54,7 +54,7 @@ namespace Test.Object
     [TestMethod]
     public void NullableOrResult_NullFunc_ThrowsArgNullException()
     {
-      Assert.ThrowsException<ArgumentNullException>(() => ObjectAide.NullableOrResult<string, int>(null, null));
+      _ = Assert.ThrowsException<ArgumentNullException>(() => ObjectAide.NullableOrResult<string, int>(null, null));
     }
 
     #endregion
