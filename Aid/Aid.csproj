@@ -1,31 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Software9119.Aid</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>Software9119.Aid</PackageId>
-    <Authors>Jiri Cepelka</Authors>
-    <Company>Software9119</Company>
-    <Copyright>Verbal consent needed.</Copyright>
-    <Description>Aide types.</Description>
-    <AssemblyName>Software9119.Aid</AssemblyName>
-    <Product>Aid</Product>
-    <Version>8.1.0</Version>
-    <AssemblyVersion>8.1.0.0</AssemblyVersion>    
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <TargetFramework>net5.0</TargetFramework>    
+    <Nullable>disable</Nullable>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\JC\source\repos\Aid\Aid\Software9119.Aid.xml</DocumentationFile>
-    <CodeAnalysisRuleSet />
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Jiri Cepelka</Authors>
+    <Company>Software9119</Company>
+    <Description>Aide types.</Description>
+    <Copyright>Verbal consent needed.</Copyright>
+    <RootNamespace>Software9119.Aid</RootNamespace>    
+    <Version>8.2.0</Version>
+    <AssemblyVersion>8.2.0.0</AssemblyVersion>    
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <CodeAnalysisRuleSet />
-    <DocumentationFile>C:\Users\JC\source\repos\Aid\Aid\Software9119.Aid.xml</DocumentationFile>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <PackageId>Software9119.$(AssemblyName).$(Configuration)</PackageId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PackageId>Software9119.$(AssemblyName)</PackageId>
+  </PropertyGroup>
+
+  <Target Name="CopyPackage" AfterTargets="Pack">
+    <Copy SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder=".\..\packages\" />
+  </Target>
+    
   <ItemGroup>
     <PackageReference Include="System.Collections.Immutable" Version="5.0.0" />
   </ItemGroup>
