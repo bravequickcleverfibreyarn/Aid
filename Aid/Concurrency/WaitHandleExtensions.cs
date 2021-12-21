@@ -2,23 +2,23 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Software9119.Aid.Concurrency
+namespace Software9119.Aid.Concurrency;
+
+static public class WaitHandleExtensions
 {
-  static public class WaitHandleExtensions
+  /// <summary>
+  /// Provides <see cref="WaitHandle"/> with task-pattern base asynchronicity.
+  /// </summary>    
+  static public Task<bool> WaitOneAsync ( this WaitHandle waitHandle, int? timeoutMilisecs = null )
   {
-    /// <summary>
-    /// Provides <see cref="WaitHandle"/> with task-pattern base asynchronicity.
-    /// </summary>    
-    public static Task<bool> WaitOneAsync(this WaitHandle waitHandle, int? timeoutMilisecs = null)
+    if (timeoutMilisecs is null)
     {
-      if (timeoutMilisecs is null)
-      {
-        timeoutMilisecs = -1; // Infinite.
-      }
+      timeoutMilisecs = -1; // Infinite.
+    }
 
-      var tcs = new TaskCompletionSource<bool>();
+    var tcs = new TaskCompletionSource<bool>();
 
-      RegisteredWaitHandle rwh = ThreadPool.RegisterWaitForSingleObject
+    RegisteredWaitHandle rwh = ThreadPool.RegisterWaitForSingleObject
       (
           waitHandle,
           (_, timedOut) => tcs.SetResult(!timedOut),
@@ -26,9 +26,7 @@ namespace Software9119.Aid.Concurrency
           timeoutMilisecs.Value,
           true);
 
-      _ = tcs.Task.ContinueWith(_ => rwh.Unregister(null), TaskScheduler.Default);
-      return tcs.Task;
-    }
+    _ = tcs.Task.ContinueWith (_ => rwh.Unregister (null), TaskScheduler.Default);
+    return tcs.Task;
   }
-
 }
