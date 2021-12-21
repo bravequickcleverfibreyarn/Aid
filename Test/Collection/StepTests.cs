@@ -7,344 +7,343 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Test.Collection
+namespace Test.Collection;
+
+[TestClass]
+public class StepTests
 {
-  [TestClass]
-  public class StepTests
+  // Arithmetic operators
+
+  [TestMethod]
+  public void IncrementOperator ()
   {
-    // Arithmetic operators
+    const int homogenicStepSize = 3;
+    Step step = new (homogenicStepSize);
 
-    [TestMethod]
-    public void IncrementOperator ()
+    ++step;
+    Assert.AreEqual (homogenicStepSize, step);
+
+    step++;
+    Assert.AreEqual (homogenicStepSize * 2, step);
+  }
+
+  [TestMethod]
+  public void DecrementOperator ()
+  {
+    const int homogenicStepSize = 3;
+    Step step = new (homogenicStepSize);
+
+    --step;
+    Assert.AreEqual (-homogenicStepSize, step);
+
+    step--;
+    Assert.AreEqual (-2 * homogenicStepSize, step);
+  }
+
+  [TestMethod]
+  public void AddOperator ()
+  {
+    const int homogenicStepSize = 3;
+    Step step = new (homogenicStepSize);
+
+    const int heterogenicStep = 89;
+
+    step += heterogenicStep;
+    Assert.AreEqual (heterogenicStep, step);
+
+    step++;
+    Assert.AreEqual (heterogenicStep + homogenicStepSize, step);
+  }
+
+  [TestMethod]
+  public void SubtractOperator ()
+  {
+    const int homogenicStepSize = 3;
+    Step step = new (homogenicStepSize );
+
+    const int heterogenicStep = 89;
+
+    step -= heterogenicStep;
+    Assert.AreEqual (-heterogenicStep, step);
+
+    step--;
+    Assert.AreEqual (-heterogenicStep - homogenicStepSize, step);
+  }
+
+  // Arithmetic operator method-counterparts
+
+  [TestMethod]
+  public void IncrementMethod ()
+  {
+    const int homogenicStepSize = 3;
+    Step step = new (homogenicStepSize);
+
+    step.Increment ();
+    Assert.AreEqual (homogenicStepSize, step);
+  }
+
+  [TestMethod]
+  public void DecrementMethod ()
+  {
+    const int homogenicStepSize = 3;
+    Step step = new (homogenicStepSize);
+
+    step.Decrement ();
+    Assert.AreEqual (-homogenicStepSize, step);
+  }
+
+  [TestMethod]
+  public void AddMethod ()
+  {
+    const int homogenicStepSize = 3;
+    Step step = new (homogenicStepSize);
+
+    const int heterogenicStep = 89;
+
+    step.Add (heterogenicStep);
+    Assert.AreEqual (heterogenicStep, step);
+
+    step++;
+    Assert.AreEqual (heterogenicStep + homogenicStepSize, step);
+  }
+
+  [TestMethod]
+  public void SubtractMethod ()
+  {
+    const int homogenicStepSize = 3;
+    Step step = new (homogenicStepSize );
+
+    const int heterogenicStep = 89;
+    step.Subtract (heterogenicStep);
+
+    Assert.AreEqual (-heterogenicStep, step);
+
+    step--;
+    Assert.AreEqual (-heterogenicStep - homogenicStepSize, step);
+  }
+
+  // Casting
+
+  [TestMethod]
+  public void ImplicitIntCastOperator ()
+  {
+    Step step = new (3);
+
+    ++step;
+    ++step;
+
+    int numStep = step;
+
+    Assert.AreEqual (6, numStep);
+  }
+
+  [TestMethod]
+  public void FromStepMethod_ToInt32 ()
+  {
+    Step step = new (3);
+
+    ++step;
+    ++step;
+
+    int numStep = step.ToInt32 ();
+
+    Assert.AreEqual (6, numStep);
+  }
+
+  // Equality
+
+  [TestMethod]
+  public void EqualsObjectMethod ()
+  {
     {
-      const int homogenicStepSize = 3;
-      Step step = new (homogenicStepSize);
+      Step step1  = new (3);
+      object obj  = new ();
 
-      ++step;
-      Assert.AreEqual (homogenicStepSize, step);
-
-      step++;
-      Assert.AreEqual (homogenicStepSize * 2, step);
+      Assert.IsFalse (step1.Equals ((object) obj));
+      Assert.IsFalse (step1.Equals ((object) null));
     }
-
-    [TestMethod]
-    public void DecrementOperator ()
     {
-      const int homogenicStepSize = 3;
-      Step step = new (homogenicStepSize);
+      Step step1  = new (3);
+      object obj  = new Step (3);
 
-      --step;
-      Assert.AreEqual (-homogenicStepSize, step);
+      Assert.IsTrue (step1.Equals ((object) obj));
 
-      step--;
-      Assert.AreEqual (-2 * homogenicStepSize, step);
+      step1++;
+      Assert.IsFalse (step1.Equals ((object) obj));
     }
-
-    [TestMethod]
-    public void AddOperator ()
     {
-      const int homogenicStepSize = 3;
-      Step step = new (homogenicStepSize);
 
-      const int heterogenicStep = 89;
+      Step step1  = new (3);
+      object obj  = new Step (4);
 
-      step += heterogenicStep;
-      Assert.AreEqual (heterogenicStep, step);
-
-      step++;
-      Assert.AreEqual (heterogenicStep + homogenicStepSize, step);
+      Assert.IsFalse (step1.Equals ((object) obj));
     }
-
-    [TestMethod]
-    public void SubtractOperator ()
     {
-      const int homogenicStepSize = 3;
-      Step step = new (homogenicStepSize );
+      Step step1 = new (4);
+      step1.Increment ();
 
-      const int heterogenicStep = 89;
+      Step step2 = new (4);
+      step2.Increment ();
 
-      step -= heterogenicStep;
-      Assert.AreEqual (-heterogenicStep, step);
-
-      step--;
-      Assert.AreEqual (-heterogenicStep - homogenicStepSize, step);
+      Assert.IsTrue (step1.Equals ((object) step2));
     }
+  }
 
-    // Arithmetic operator method-counterparts
-
-    [TestMethod]
-    public void IncrementMethod ()
+  [TestMethod]
+  public void EqualsStepMethod ()
+  {
     {
-      const int homogenicStepSize = 3;
-      Step step = new (homogenicStepSize);
+      Step step1  = new (3);
+      Step step2  = new (4);
 
-      step.Increment ();
-      Assert.AreEqual (homogenicStepSize, step);
+      Assert.IsFalse (step1.Equals ((Step) step2));
+
+      step1++;
+      Assert.IsFalse (step1.Equals ((Step) step2));
+      step2++;
+      Assert.IsFalse (step1.Equals ((Step) step2));
     }
-
-    [TestMethod]
-    public void DecrementMethod ()
     {
-      const int homogenicStepSize = 3;
-      Step step = new (homogenicStepSize);
+      Step step1  = new (3);
+      Step step2  = new (3);
 
-      step.Decrement ();
-      Assert.AreEqual (-homogenicStepSize, step);
+      Assert.IsTrue (step1.Equals ((Step) step2));
+
+      step1++;
+      Assert.IsFalse (step1.Equals ((Step) step2));
+      step2++;
+      Assert.IsTrue (step1.Equals ((Step) step2));
     }
+  }
 
-    [TestMethod]
-    public void AddMethod ()
+  [TestMethod]
+  public void EqualOperator ()
+  {
     {
-      const int homogenicStepSize = 3;
-      Step step = new (homogenicStepSize);
+      Step step1  = new (3);
+      Step step2  = new (4);
 
-      const int heterogenicStep = 89;
+      Assert.IsFalse (step1 == step2);
 
-      step.Add (heterogenicStep);
-      Assert.AreEqual (heterogenicStep, step);
-
-      step++;
-      Assert.AreEqual (heterogenicStep + homogenicStepSize, step);
+      step1++;
+      Assert.IsFalse (step1 == step2);
+      step2++;
+      Assert.IsFalse (step1 == step2);
     }
-
-    [TestMethod]
-    public void SubtractMethod ()
     {
-      const int homogenicStepSize = 3;
-      Step step = new (homogenicStepSize );
+      Step step1  = new (3);
+      Step step2  = new (3);
 
-      const int heterogenicStep = 89;
-      step.Subtract (heterogenicStep);
+      Assert.IsTrue (step1 == step2);
 
-      Assert.AreEqual (-heterogenicStep, step);
-
-      step--;
-      Assert.AreEqual (-heterogenicStep - homogenicStepSize, step);
+      step1++;
+      Assert.IsFalse (step1 == step2);
+      step2++;
+      Assert.IsTrue (step1 == step2);
     }
+  }
 
-    // Casting
-
-    [TestMethod]
-    public void ImplicitIntCastOperator ()
+  [TestMethod]
+  public void InequalOperator ()
+  {
     {
-      Step step = new (3);
+      Step step1  = new (3);
+      Step step2  = new (4);
 
-      ++step;
-      ++step;
+      Assert.IsTrue (step1 != step2);
 
-      int numStep = step;
-
-      Assert.AreEqual (6, numStep);
+      step1++;
+      Assert.IsTrue (step1 != step2);
+      step2++;
+      Assert.IsTrue (step1 != step2);
     }
-
-    [TestMethod]
-    public void FromStepMethod_ToInt32 ()
     {
-      Step step = new (3);
+      Step step1  = new (3);
+      Step step2  = new (3);
 
-      ++step;
-      ++step;
+      Assert.IsFalse (step1 != step2);
 
-      int numStep = step.ToInt32 ();
-
-      Assert.AreEqual (6, numStep);
+      step1++;
+      Assert.IsTrue (step1 != step2);
+      step2++;
+      Assert.IsFalse (step1 != step2);
     }
+  }
 
-    // Equality
+  // Constructors
 
-    [TestMethod]
-    public void EqualsObjectMethod ()
-    {
-      {
-        Step step1  = new (3);
-        object obj  = new ();
+  [TestMethod]
+  public void InitialValueConstructor ()
+  {
+    const int value = 65536; // 4^8
 
-        Assert.IsFalse (step1.Equals ((object) obj));
-        Assert.IsFalse (step1.Equals ((object) null));
-      }
-      {
-        Step step1  = new (3);
-        object obj  = new Step (3);
+    Step step = new (4, value);
+    Assert.AreEqual (value, step);
 
-        Assert.IsTrue (step1.Equals ((object) obj));
+    --step;
+    Assert.AreEqual (value - 4, step);
 
-        step1++;
-        Assert.IsFalse (step1.Equals ((object) obj));
-      }
-      {
+    step++;
+    step++;
+    Assert.AreEqual (value + 4, step);
+  }
 
-        Step step1  = new (3);
-        object obj  = new Step (4);
+  [TestMethod]
+  public void ZeroSizedStep_ThrowArgumentOutOfRangeException ()
+  {
+    _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0, default));
+    _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0));
+  }
 
-        Assert.IsFalse (step1.Equals ((object) obj));
-      }
-      {
-        Step step1 = new (4);
-        step1.Increment ();
+  [TestMethod]
+  public void DefaultConstructor ()
+  {
+    const int stepSize = 1;
+    Step step = new (stepSize);
 
-        Step step2 = new (4);
-        step2.Increment ();
+    Assert.AreEqual (0, step);
+    Assert.AreEqual (stepSize, step.Size);
+  }
 
-        Assert.IsTrue (step1.Equals ((object) step2));
-      }
-    }
+  // Usage test
 
-    [TestMethod]
-    public void EqualsStepMethod ()
-    {
-      {
-        Step step1  = new (3);
-        Step step2  = new (4);
+  [TestMethod]
+  public void Usage ()
+  {
+    Step step1 = new (3, 0);
+    Step step2 = new (3, 1);
+    Step step3 = new (3, 2);
 
-        Assert.IsFalse (step1.Equals ((Step) step2));
-
-        step1++;
-        Assert.IsFalse (step1.Equals ((Step) step2));
-        step2++;
-        Assert.IsFalse (step1.Equals ((Step) step2));
-      }
-      {
-        Step step1  = new (3);
-        Step step2  = new (3);
-
-        Assert.IsTrue (step1.Equals ((Step) step2));
-
-        step1++;
-        Assert.IsFalse (step1.Equals ((Step) step2));
-        step2++;
-        Assert.IsTrue (step1.Equals ((Step) step2));
-      }
-    }
-
-    [TestMethod]
-    public void EqualOperator ()
-    {
-      {
-        Step step1  = new (3);
-        Step step2  = new (4);
-
-        Assert.IsFalse (step1 == step2);
-
-        step1++;
-        Assert.IsFalse (step1 == step2);
-        step2++;
-        Assert.IsFalse (step1 == step2);
-      }
-      {
-        Step step1  = new (3);
-        Step step2  = new (3);
-
-        Assert.IsTrue (step1 == step2);
-
-        step1++;
-        Assert.IsFalse (step1 == step2);
-        step2++;
-        Assert.IsTrue (step1 == step2);
-      }
-    }
-
-    [TestMethod]
-    public void InequalOperator ()
-    {
-      {
-        Step step1  = new (3);
-        Step step2  = new (4);
-
-        Assert.IsTrue (step1 != step2);
-
-        step1++;
-        Assert.IsTrue (step1 != step2);
-        step2++;
-        Assert.IsTrue (step1 != step2);
-      }
-      {
-        Step step1  = new (3);
-        Step step2  = new (3);
-
-        Assert.IsFalse (step1 != step2);
-
-        step1++;
-        Assert.IsTrue (step1 != step2);
-        step2++;
-        Assert.IsFalse (step1 != step2);
-      }
-    }
-
-    // Constructors
-
-    [TestMethod]
-    public void InitialValueConstructor ()
-    {
-      const int value = 65536; // 4^8
-
-      Step step = new (4, value);
-      Assert.AreEqual (value, step);
-
-      --step;
-      Assert.AreEqual (value - 4, step);
-
-      step++;
-      step++;
-      Assert.AreEqual (value + 4, step);
-    }
-
-    [TestMethod]
-    public void ZeroSizedStep_ThrowArgumentOutOfRangeException ()
-    {
-      _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0, default));
-      _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0));
-    }
-
-    [TestMethod]
-    public void DefaultConstructor ()
-    {
-      const int stepSize = 1;
-      Step step = new (stepSize);
-
-      Assert.AreEqual (0, step);
-      Assert.AreEqual (stepSize, step.Size);
-    }
-
-    // Usage test
-
-    [TestMethod]
-    public void Usage ()
-    {
-      Step step1 = new (3, 0);
-      Step step2 = new (3, 1);
-      Step step3 = new (3, 2);
-
-      const int size = 90;
-      IReadOnlyList<int> source = System.Linq.Enumerable
+    const int size = 90;
+    IReadOnlyList<int> source = System.Linq.Enumerable
         .Range(0, size)
         .ToArray(size);
 
-      int[] destination = new int[size];
+    int[] destination = new int[size];
 
-      int count = source.Count;
-      for ( ; step3 < count; )
-      {
-        destination [step1] = source [step1++];
-        destination [step2] = source [step2++];
-        destination [step3] = source [step3++];
-      }
-
-      Assert.IsTrue (source.SequenceEqual (destination));
+    int count = source.Count;
+    for (; step3 < count;)
+    {
+      destination [step1] = source [step1++];
+      destination [step2] = source [step2++];
+      destination [step3] = source [step3++];
     }
 
-    [TestMethod]
-    public void Usage2 ()
-    {
-      const int size = 90;
-      IReadOnlyList<int> numbers = System.Linq.Enumerable
+    Assert.IsTrue (source.SequenceEqual (destination));
+  }
+
+  [TestMethod]
+  public void Usage2 ()
+  {
+    const int size = 90;
+    IReadOnlyList<int> numbers = System.Linq.Enumerable
         .Range(0, size)
         .ToArray(size);
 
-      Step forward = new (1, 0);
-      Step backward = new (1, size -1);
+    Step forward = new (1, 0);
+    Step backward = new (1, size -1);
 
-      for ( ; forward < backward; )
-        Assert.IsTrue (numbers [forward++] < numbers [backward--]);
-    }
+    for (; forward < backward;)
+      Assert.IsTrue (numbers [forward++] < numbers [backward--]);
   }
 }
