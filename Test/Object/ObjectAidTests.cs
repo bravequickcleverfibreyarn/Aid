@@ -31,7 +31,7 @@ public class ObjectAidTests
   [TestMethod]
   public void NullOrResult_NullFunc_ThrowsArgNullException ()
   {
-    _ = Assert.ThrowsException<ArgumentNullException> (() => ObjectAide.NullOrResult<string, object> (null, null));
+    _ = Assert.ThrowsException<ArgumentNullException> (() => ObjectAide.NullOrResult<string, object> ("", null));
   }
 
   // NullableOrResult tests
@@ -54,7 +54,7 @@ public class ObjectAidTests
   [TestMethod]
   public void NullableOrResult_NullFunc_ThrowsArgNullException ()
   {
-    _ = Assert.ThrowsException<ArgumentNullException> (() => ObjectAide.NullableOrResult<string, int> (null, null));
+    _ = Assert.ThrowsException<ArgumentNullException> (() => ObjectAide.NullableOrResult<string, int> ("", null));
   }
 
   #endregion
@@ -63,7 +63,7 @@ public class ObjectAidTests
 
   [TestMethod]
   [DataRow (null, null, false)]
-  [DataRow (1, null, false)]  
+  [DataRow (1, null, false)]
   [DataRow (null, 1, false)]
   [DataRow (1L, 1, false)]
   [DataRow (1L, 1L, true)]
@@ -80,7 +80,7 @@ public class ObjectAidTests
     int? nullableIntDefault   = default;
     int intDefault            = default;
 
-    int? someNullableIntWithValue = new int?(4);
+    int? someNullableIntWithValue = 4;
 
     Assert.IsFalse (ObjectAide.Matches (nullableIntDefault, intDefault));
     Assert.IsFalse (ObjectAide.Matches (intDefault, nullableIntDefault));

@@ -14,11 +14,7 @@ static public class ObjectAide
   static public U? NullOrResult<T, U> ( T? t, Func<T?, U> func )
   where T : class
   where U : class
-  {
-    ThrowNullFunc (func, nameof (func));
-
-    return t.IsNull () ? null : func (t);
-  }
+  => (U?) NullOrResultCore (t, func);
 
   /// <returns>
   /// <see cref="Nullable{U}"/> if <paramref name="t"/> is <see langword="null"/>. Else <paramref name="func"/> result on <paramref name="t"/>.
@@ -27,18 +23,16 @@ static public class ObjectAide
   static public U? NullableOrResult<T, U> ( T? t, Func<T?, U> func )
   where T : class
   where U : struct
-  {
-    ThrowNullFunc (func, nameof (func));
-
-    return t.IsNull () ? (U?) null : func (t);
-  }
+  => (U?) NullOrResultCore (t, func);
 
 #nullable disable
 
-  static void ThrowNullFunc<T, U> ( Func<T, U> func, string paramName )
+  static object NullOrResultCore<T, U> ( T t, Func<T, U> func )
   {
     if (func.IsNull ())
-      throw new ArgumentNullException (paramName);
+      throw new ArgumentNullException (nameof (func));
+
+    return t.IsNull () ? null : func (t);
   }
 
 #nullable enable
