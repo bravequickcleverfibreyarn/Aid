@@ -20,7 +20,6 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage ("Style", "IDE0022:Use expression body for methods", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Collection.CollectionExtensions.ToReadOnlyDictionary``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2},System.Boolean)~System.Collections.ObjectModel.ReadOnlyDictionary{``1,``2}")]
 [assembly: SuppressMessage ("Style", "IDE0022:Use expression body for methods", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Collection.CollectionExtensions.AsReadOnlyDictionary``2(System.Collections.Generic.Dictionary{``0,``1},System.Boolean)~System.Collections.ObjectModel.ReadOnlyDictionary{``0,``1}")]
 [assembly: SuppressMessage ("Style", "IDE0022:Use expression body for methods", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{``1},System.Func{``1,``0},System.Int32)~System.Collections.Generic.Dictionary{``0,``1}")]
-[assembly: SuppressMessage ("Style", "IDE0022:Use expression body for methods", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Exception.ArgumentRangeException`1.ToString~System.String")]
 [assembly: SuppressMessage ("Style", "IDE0022:Use expression body for methods", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Collection.CollectionExtensions.ToReadOnlyDictionary``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Boolean)~System.Collections.ObjectModel.ReadOnlyDictionary{``1,``0}")]
 
 #endregion
@@ -41,6 +40,9 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage ("Naming", "CA1720:Identifier contains type name", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Object.ObjectExtensions.IsNull(System.Object)~System.Boolean")]
 
 [assembly: SuppressMessage ("Naming", "CA1716:Identifiers should not match keywords", Justification = "<Pending>", Scope = "type", Target = "~T:Software9119.Aid.Collection.Step")]
+
+[assembly: SuppressMessage ("Naming", "CA1721:Property names should not match get methods", Justification = "Not this case.", Scope = "type", Target = "~T:Software9119.Aid.Exception.ArgumentRangeExceptionS`1")]
+[assembly: SuppressMessage ("Naming", "CA1721:Property names should not match get methods", Justification = "Not this case.", Scope = "type", Target = "~T:Software9119.Aid.Exception.ArgumentRangeExceptionC`1")]
 #endregion
 
 #region Design

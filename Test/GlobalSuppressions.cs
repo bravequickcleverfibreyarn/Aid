@@ -35,3 +35,5 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage ("Naming", "CA1716:Identifiers should not match keywords", Justification = "<Pending>", Scope = "namespace", Target = "~N:Test.Object")]
 
 [assembly: SuppressMessage("Code Quality", "IDE0051:Remove unused private members", Justification = "<Pending>", Scope = "member", Target = "~T:Test.Type.TypeAideTests")]
+
+[assembly: SuppressMessage ("Style", "IDE0061:Use expression body for local functions", Justification = "No room.", Scope = "member", Target = "~M:Test.Exception.ArgumentRangeExceptionSTests.Message___SpecialInfoHasPrecendenceOverActualValue")]

@@ -1,5 +1,4 @@
 ﻿• validate global suppression
 • create tests for ArgumentRangeException
 • port WaitHandleExtensions from Lockers and remove it there
-• migrate to DOTNET6
 • explore nullable possibilities

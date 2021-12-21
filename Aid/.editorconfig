@@ -49,7 +49,7 @@ dotnet_diagnostic.CA1017.severity = warning
 dotnet_diagnostic.CA1018.severity = warning
 
 # CA1021: Avoid out parameters
-dotnet_diagnostic.CA1021.severity = warning
+dotnet_diagnostic.CA1021.severity = silent
 
 # CA1024: Use properties where appropriate
 dotnet_diagnostic.CA1024.severity = warning

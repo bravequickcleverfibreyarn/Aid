@@ -571,12 +571,12 @@ public class CollectionExtensionsTests2
   }
 
   [TestMethod]
-  public void AsOrTo_UnsupportedDestinationType_ThrowsArgumentRangeException ()
+  public void AsOrTo_UnsupportedDestinationType_ThrowsArgumentRangeExceptionC ()
   {
     IEnumerable<int> collection = new[] { 1, 2, 3 };
     Action asOrToAction = () => collection.AsOrTo<int, ReadOnlyCollection<int>>();
 
-    ArgumentRangeException<System.Type> are = Assert.ThrowsException<ArgumentRangeException<System.Type>>(asOrToAction);
+    ArgumentRangeExceptionC<System.Type> are = Assert.ThrowsException<ArgumentRangeExceptionC<System.Type>>(asOrToAction);
 
     Assert.AreEqual (typeof (ReadOnlyCollection<int>), are.ActualValue);
     Assert.IsTrue
