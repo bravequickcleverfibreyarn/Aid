@@ -63,7 +63,7 @@ public class ObjectAidTests
 
   [TestMethod]
   [DataRow (null, null, false)]
-  [DataRow (1, null, false)]
+  [DataRow (1, null, false)]  
   [DataRow (null, 1, false)]
   [DataRow (1L, 1, false)]
   [DataRow (1L, 1L, true)]
@@ -72,6 +72,20 @@ public class ObjectAidTests
   public void Matches_TestDataProvided_MeetExpectations ( object left, object right, bool expectation )
   {
     Assert.AreEqual (expectation, ObjectAide.Matches (left, right));
+  }
+
+  [TestMethod]
+  public void Matches_OnNullableValueTypes_MeetExpectations ()
+  {
+    int? nullableIntDefault   = default;
+    int intDefault            = default;
+
+    int? someNullableIntWithValue = new int?(4);
+
+    Assert.IsFalse (ObjectAide.Matches (nullableIntDefault, intDefault));
+    Assert.IsFalse (ObjectAide.Matches (intDefault, nullableIntDefault));
+    Assert.IsFalse (ObjectAide.Matches (nullableIntDefault, nullableIntDefault));
+    Assert.IsTrue (ObjectAide.Matches (someNullableIntWithValue, someNullableIntWithValue));
   }
 
   #endregion
