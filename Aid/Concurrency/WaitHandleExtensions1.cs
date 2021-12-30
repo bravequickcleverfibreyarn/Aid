@@ -1,14 +1,15 @@
-﻿
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Software9119.Aid.Concurrency;
 
-static public class WaitHandleExtensions
+static public partial class WaitHandleExtensions
 {
   /// <summary>
   /// Provides <see cref="WaitHandle"/> with task-pattern base asynchronicity.
   /// </summary>    
+  [Obsolete ("Use other overloads.")]
   static public Task<bool> WaitOneAsync ( this WaitHandle waitHandle, int? timeoutMilisecs = null )
   {
     if (timeoutMilisecs is null)

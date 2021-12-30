@@ -1,3 +1,1 @@
-﻿• validate global suppression
-• port WaitHandleExtensions from Lockers and remove it there
-• explore nullable possibilities
+﻿• explore nullable possibilities

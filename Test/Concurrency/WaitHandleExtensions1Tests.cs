@@ -2,15 +2,17 @@
 
 using Software9119.Aid.Concurrency;
 
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Test.Concurrency;
 
 [TestClass]
-public class WaitHandleExtensionsTests
+public class WaitHandleExtensions1Tests
 {
   [TestMethod]
+  [Obsolete ("Obsolete overload test.")]
   public void WaitOneAsync_NormalUsageEventNotSet_AsyncBehavior ()
   {
     WaitHandle eventWaitHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
@@ -30,6 +32,7 @@ public class WaitHandleExtensionsTests
   }
 
   [TestMethod]
+  [Obsolete ("Obsolete overload test.")]
   public void WaitOneAsync_NormalUsageEventSet_AsyncBehaviorNoWait ()
   {
     WaitHandle eventWaitHandle = new EventWaitHandle(true, EventResetMode.AutoReset);
@@ -44,6 +47,7 @@ public class WaitHandleExtensionsTests
   }
 
   [TestMethod]
+  [Obsolete ("Obsolete overload test.")]
   public void WaitOneAsync_TimeoutSetEventNotSet_TimedOut ()
   {
     WaitHandle eventWaitHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
@@ -67,6 +71,7 @@ public class WaitHandleExtensionsTests
   }
 
   [TestMethod]
+  [Obsolete ("Obsolete overload test.")]
   public void WaitOneAsync_TimeoutSetEventSet_AsyncBehaviorNoWait ()
   {
     WaitHandle eventWaitHandle = new EventWaitHandle(true, EventResetMode.AutoReset);
