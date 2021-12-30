@@ -42,11 +42,11 @@ using System.Diagnostics.CodeAnalysis;
 #endregion
 
 #region Design
-[assembly: SuppressMessage ("Design", "CA1002:Do not expose generic lists", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToList``1(System.Collections.Generic.IEnumerable{``0},System.Int32)~System.Collections.Generic.List{``0}")]
+[assembly: SuppressMessage ("Design", "CA1002:Do not expose generic lists", Justification = "Fine.", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToList``1(System.Collections.Generic.IEnumerable{``0},System.Int32)~System.Collections.Generic.List{``0}")]
 
-[assembly: SuppressMessage ("Design", "CA1051:Do not declare visible instance fields", Justification = "<Pending>", Scope = "member", Target = "~F:Software9119.Aid.Collection.Step.Size")]
+[assembly: SuppressMessage ("Design", "CA1051:Do not declare visible instance fields", Justification = "Fine.", Scope = "member", Target = "~F:Software9119.Aid.Collection.Step.Size")]
 
-[assembly: SuppressMessage ("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToArray``1(System.Collections.Generic.IEnumerable{``0},System.Int32)~``0[]")]
-[assembly: SuppressMessage ("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToList``1(System.Collections.Generic.IEnumerable{``0},System.Int32)~System.Collections.Generic.List{``0}")]
-[assembly: SuppressMessage ("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary``3(System.Collections.Generic.IEnumerable{``2},System.Func{``2,``0},System.Func{``2,``1},System.Int32)~System.Collections.Generic.Dictionary{``0,``1}")]
+[assembly: SuppressMessage ("Design", "CA1062:Validate arguments of public methods", Justification = "Fine.", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToArray``1(System.Collections.Generic.IEnumerable{``0},System.Int32)~``0[]")]
+[assembly: SuppressMessage ("Design", "CA1062:Validate arguments of public methods", Justification = "Fine.", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToList``1(System.Collections.Generic.IEnumerable{``0},System.Int32)~System.Collections.Generic.List{``0}")]
+[assembly: SuppressMessage ("Design", "CA1062:Validate arguments of public methods", Justification = "Fine.", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary``3(System.Collections.Generic.IEnumerable{``2},System.Func{``2,``0},System.Func{``2,``1},System.Int32)~System.Collections.Generic.Dictionary{``0,``1}")]
 #endregion
