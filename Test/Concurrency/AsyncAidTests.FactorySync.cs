@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 namespace Test.Concurrency;
 
 [TestClass]
-public class AsyncAidTests
+public class AsyncAidTests_FactorySync
 {
+
+  [TestMethod]
+  public void AsyncAideFactorySyncCtor__NullTaskScheduler___ThrowsArgumentNullException ()
+  {
+    _ = Assert.ThrowsException<ArgumentNullException> (() => new AsyncAide.FactorySync (default, default, null));
+  }
+
   // RunSync
 
   [TestMethod]
@@ -17,7 +24,9 @@ public class AsyncAidTests
   {
     object obj = null;
 
-    AsyncAide.RunSync (Test);
+    AsyncAide.FactorySync factorySync = new ();
+
+    factorySync.RunSync (Test);
     Assert.AreNotEqual (null, obj);
 
     async Task Test ()
@@ -30,7 +39,9 @@ public class AsyncAidTests
   [TestMethod]
   public void RunSync__NullFunction___ThrowsArgumentNullExcpetion ()
   {
-    _ = Assert.ThrowsException<ArgumentNullException> (() => AsyncAide.RunSync (null));
+    AsyncAide.FactorySync factorySync = new ();
+
+    _ = Assert.ThrowsException<ArgumentNullException> (() => factorySync.RunSync (null));
   }
 
   // RunSyncT
@@ -40,7 +51,9 @@ public class AsyncAidTests
   {
     const int test = 33;
 
-    Assert.AreEqual (test, AsyncAide.RunSync (Test));
+    AsyncAide.FactorySync factorySync = new ();
+
+    Assert.AreEqual (test, factorySync.RunSync (Test));
 
     static async Task<int> Test ()
     {
@@ -52,6 +65,8 @@ public class AsyncAidTests
   [TestMethod]
   public void RunSyncT__NullFunction___ThrowsArgumentNullExcpetion ()
   {
-    _ = Assert.ThrowsException<ArgumentNullException> (() => AsyncAide.RunSync<int> (null));
+    AsyncAide.FactorySync factorySync = new ();
+
+    _ = Assert.ThrowsException<ArgumentNullException> (() => factorySync.RunSync<int> (null));
   }
 }
