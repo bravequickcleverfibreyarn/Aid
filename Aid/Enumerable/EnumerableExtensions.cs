@@ -46,7 +46,8 @@ static public class EnumerableExtensions
   (
     this IEnumerable<Value> iEnumerable,
     Func<Value, Key> keySelector,
-    int count )
+    int count
+  )
   {
     return ToDictionary (iEnumerable, keySelector, value => value, count);
   }
