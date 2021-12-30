@@ -59,7 +59,8 @@ public class WaitHandleExtensionsTests
       {
         Assert.AreEqual (TaskStatus.RanToCompletion, x.Status);
         Assert.AreEqual (false, task.Result);
-      }
+      },
+      TaskScheduler.Current
     );
 
     eventWaitHandle.Dispose ();

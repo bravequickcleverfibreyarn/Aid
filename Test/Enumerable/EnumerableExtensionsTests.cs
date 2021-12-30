@@ -44,13 +44,13 @@ public class EnumerableExtensionsTests
   public void ToDictionary_SomeEnumerableKeySelector_ReturnsDictionary ()
   {
     IReadOnlyList<string> testData = new[]
-      {
-        "Ahoj",
-        "Nazdar",
-        "ČaukyMňauky",
-        "Papá",
-        "_Pusu"
-      };
+    {
+      "+Hello",
+      "Adiós",
+      "Hasta luego",
+      "*_Hasta otro día",
+      "_Hi"
+    };
 
     Func<string, char> keySelector = x => x[0];
 
@@ -66,13 +66,13 @@ public class EnumerableExtensionsTests
   public void ToDictionary_SomeEnumerableKeySelectorValueSelector_ReturnsDictionary ()
   {
     IReadOnlyList<string> testData = new[]
-      {
-        "Ahoj",
-        "Nazdar",
-        "ČaukyMňauky",
-        "Papá",
-        "_Pusu"
-      };
+    {
+      "+Hello",
+      "Adiós",
+      "Hasta luego",
+      "*_Hasta otro día",
+      "_Hi"
+    };
 
     Func<string, char> keySelector = x => x[0];
     Func<string, char> valueSelector = x => x[^1];
