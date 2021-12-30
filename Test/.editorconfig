@@ -704,3 +704,6 @@ dotnet_diagnostic.IDE0022.severity = silent
 
 # IDE0057: Use range operator
 dotnet_diagnostic.IDE0057.severity = silent
+
+# IDE0034: Simplify 'default' expression
+dotnet_diagnostic.IDE0034.severity = silent

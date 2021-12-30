@@ -14,14 +14,10 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage ("Style", "IDE0007:Use implicit type", Justification = "👎🏻", Scope = "member", Target = "~M:Test.Collection.CollectionExtensionsTests.ToIList_ProvidedWithNullExpectsEmpty_ReturnsEmptyArray")]
 [assembly: SuppressMessage ("Style", "IDE0007:Use implicit type", Justification = "👎🏻", Scope = "member", Target = "~M:Test.Collection.CollectionExtensionsTests.ToReadOnlyDictionary2_ProvidedWithValidCollection_ReturnsRODict(System.Nullable{System.Boolean})")]
 
-[assembly: SuppressMessage("Style", "IDE0034:Simplify 'default' expression", Justification = "Less obvious.", Scope = "member", Target = "~M:Test.Object.ObjectAidTests.NullableOrResult_NullProvided_ReturnsNullable")]
-
 [assembly: SuppressMessage("Style", "IDE0039:Use local function", Justification = "False positive.", Scope = "member", Target = "~M:Test.Collection.CollectionExtensionsTests.ToReadOnlyDictionary1_ProvidedWithValidCollection_ReturnsRODict(System.Nullable{System.Boolean})")]
 [assembly: SuppressMessage("Style", "IDE0039:Use local function", Justification = "False positive.", Scope = "member", Target = "~M:Test.Collection.CollectionExtensionsTests.ToReadOnlyDictionary2_ProvidedWithValidCollection_ReturnsRODict(System.Nullable{System.Boolean})")]
 [assembly: SuppressMessage("Style", "IDE0039:Use local function", Justification = "False positive.", Scope = "member", Target = "~M:Test.Object.ObjectAidTests.NullOrResult_ValueProvided_ReturnsFunctionResult")]
 [assembly: SuppressMessage("Style", "IDE0039:Use local function", Justification = "False positive.", Scope = "member", Target = "~M:Test.Object.ObjectAidTests.NullableOrResult_ValueProvided_ReturnsFunctionResult")]
-[assembly: SuppressMessage("Style", "IDE0039:Use local function", Justification = "False positive.", Scope = "member", Target = "~M:Test.Enumerable.EnumerableExtensionsTests.ToDictionary_SomeEnumerableKeySelectorValueSelector_ReturnsDictionary")]
-[assembly: SuppressMessage("Style", "IDE0039:Use local function", Justification = "False positive.", Scope = "member", Target = "~M:Test.Enumerable.EnumerableExtensionsTests.ToDictionary_SomeEnumerableKeySelector_ReturnsDictionary")]
 
 [assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "Not this case.", Scope = "member", Target = "~T:Test.Type.TypeAideTests")]
 

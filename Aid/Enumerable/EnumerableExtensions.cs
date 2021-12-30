@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 
 namespace Software9119.Aid.Enumerable;
@@ -10,66 +11,94 @@ static public class EnumerableExtensions
 {
 
   /// <summary>
-  /// Can bypass T[] (<seealso cref="Array"/>) widening during enumeration and final fit-size copying if its size is known beforehand.
+  ///   Can bypass T[] (<seealso cref="Array"/>) widening during enumeration and final fit-size copying if its size is known beforehand.
   /// </summary>       
-  static public T [] ToArray<T> ( this IEnumerable<T> iEnumerable, int length )
+  /// <exception cref="ArgumentNullException">
+  ///   If <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="nullForNull"/> is <see langword="false"/>.
+  /// </exception>
+  static public T [] ToArray<T> ( this IEnumerable<T> iEnumerable, int length, bool nullForNull = false )
   {
-    var arr = new T[length];
+    if (NullOrThrow (iEnumerable, nullForNull))
+      return null;
 
-    int index = -1;
-    foreach (T item in iEnumerable)
-    {
-      arr [++index] = item;
-    }
-
-    return arr;
+    return Unchecked.EnumerableExtensions.ToArray (iEnumerable, length);
   }
 
   /// <summary>
-  ///Can bypass <see cref="List{T}"/> widening during enumeration if its size is known beforehand.
-  /// </summary>       
-  static public List<T> ToList<T> ( this IEnumerable<T> iEnumerable, int count )
+  ///   Can bypass <see cref="List{T}"/> widening during enumeration if its size is known beforehand.
+  /// </summary>    
+  /// <exception cref="ArgumentNullException">
+  ///   If <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="nullForNull"/> is <see langword="false"/>.
+  /// </exception>
+  static public List<T> ToList<T> ( this IEnumerable<T> iEnumerable, int count, bool nullForNull = false )
   {
-    var list = new List<T>(count);
-    foreach (T item in iEnumerable)
-    {
-      list.Add (item);
-    }
+    if (NullOrThrow (iEnumerable, nullForNull))
+      return null;
 
-    return list;
+    return Unchecked.EnumerableExtensions.ToList (iEnumerable, count);
   }
 
   /// <summary>
-  ///Can bypass <see cref="Dictionary{Key,Value}"/> widening during enumeration if its size is known beforehand.
-  /// </summary>       
+  ///   Can bypass <see cref="Dictionary{Key,Value}"/> widening during enumeration if its size is known beforehand.
+  /// </summary>     
+  /// <exception cref="ArgumentNullException">
+  ///   If <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="nullForNull"/> is <see langword="false"/>
+  ///   or <paramref name="keySelector"/> is <see langword="null"/>.
+  /// </exception>
   static public Dictionary<Key, Value> ToDictionary<Key, Value>
   (
     this IEnumerable<Value> iEnumerable,
     Func<Value, Key> keySelector,
-    int count
+    int count,
+    bool nullForNull = false
   )
   {
-    return ToDictionary (iEnumerable, keySelector, value => value, count);
+    if (NullOrThrow (iEnumerable, nullForNull))
+      return null;
+
+    if (keySelector is null)
+      throw new ArgumentNullException (nameof (keySelector));
+
+    return Unchecked.EnumerableExtensions.ToDictionary (iEnumerable, keySelector, count);
   }
 
   /// <summary>
-  ///Can bypass <see cref="Dictionary{Key,Value}"/> widening during enumeration if its size is known beforehand.
-  /// </summary>       
+  ///   Can bypass <see cref="Dictionary{Key,Value}"/> widening during enumeration if its size is known beforehand.
+  /// </summary>     
+  /// <exception cref="ArgumentNullException">
+  ///   If <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="nullForNull"/> is <see langword="false"/>
+  ///   or <paramref name="keySelector"/> or <paramref name="valueSelector"/> is <see langword="null"/>.
+  /// </exception>
   static public Dictionary<Key, Value> ToDictionary<Key, Value, Source>
   (
     this IEnumerable<Source> iEnumerable,
     Func<Source, Key> keySelector,
     Func<Source, Value> valueSelector,
-    int count )
+    int count,
+    bool nullForNull = false
+  )
   {
-    var dict = new Dictionary<Key, Value>(count);
+    if (NullOrThrow (iEnumerable, nullForNull))
+      return null;
 
-    foreach (Source item in iEnumerable)
-    {
-      dict.Add (keySelector (item), valueSelector (item));
-    }
+    if (keySelector is null)
+      throw new ArgumentNullException (nameof (keySelector));
 
-    return dict;
+    if (valueSelector is null)
+      throw new ArgumentNullException (nameof (valueSelector));
+
+    return Unchecked.EnumerableExtensions.ToDictionary (iEnumerable, keySelector, valueSelector, count);
+  }
+
+  static bool NullOrThrow<T> ( IEnumerable<T> iEnumerable, bool nullForNull = false )
+  {
+    if (iEnumerable is null)
+      if (nullForNull)
+        return true;
+      else
+        throw new ArgumentNullException (nameof (iEnumerable));
+
+    return false;
   }
 }
 
