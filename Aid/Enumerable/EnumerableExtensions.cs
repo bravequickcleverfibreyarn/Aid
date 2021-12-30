@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Software9119.Aid.Enumerable;
@@ -90,7 +91,7 @@ static public class EnumerableExtensions
     return Unchecked.EnumerableExtensions.ToDictionary (iEnumerable, keySelector, valueSelector, count);
   }
 
-  static bool NullOrThrow<T> ( IEnumerable<T> iEnumerable, bool nullForNull = false )
+  static bool NullOrThrow ( IEnumerable iEnumerable, bool nullForNull = false )
   {
     if (iEnumerable is null)
       if (nullForNull)

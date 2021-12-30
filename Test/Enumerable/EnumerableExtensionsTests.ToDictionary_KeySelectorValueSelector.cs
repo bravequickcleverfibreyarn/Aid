@@ -47,9 +47,9 @@ public class EnumerableExtensionsTests_ToDictionary_KeySelectorValueSelector
     (
       () => Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary
       (
-        null,
-        default (Func<int, int>),
-        default (Func<int, uint>),
+        (IEnumerable<int>) null,
+        x => x,
+        x => (uint) x,
         default (int),
         false
       )
@@ -64,9 +64,9 @@ public class EnumerableExtensionsTests_ToDictionary_KeySelectorValueSelector
       null,
       Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary
       (
-        null,
-        default (Func<int, int>),
-        default (Func<int, uint>),
+        (IEnumerable<int>) null,
+        x => x,
+        x => (uint) x,
         default (int),
         true
       )

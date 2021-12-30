@@ -46,8 +46,8 @@ public class EnumerableExtensionsTests_ToDictionary_KeySelector
     (
       () => Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary
       (
-        null,
-        default (Func<int, int>),
+        (IEnumerable<int>)null,
+        x => x,
         default (int),
         false
       )
@@ -62,8 +62,8 @@ public class EnumerableExtensionsTests_ToDictionary_KeySelector
       null,
       Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary
       (
-        null,
-        default (Func<int, int>),
+        (IEnumerable<int>) null,
+        x => x,
         default (int),
         true
       )

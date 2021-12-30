@@ -20,7 +20,7 @@ static public partial class CollectionExtensions
   /// <returns>
   /// <see langword="null"/> when <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="emptyForNull"/> is <see langword="false"/>.
   /// </returns>
-  static public IList<T> ToIList<T> ( this IEnumerable<T> iEnumerable, bool emptyForNull = default )
+  static public IList<T> ToIList<T> ( this IEnumerable<T> iEnumerable, bool emptyForNull = false )
   {
     if (iEnumerable == null)
     {
