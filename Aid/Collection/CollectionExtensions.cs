@@ -1,4 +1,6 @@
-﻿using Software9119.Aid.Object;
+﻿
+using Software9119.Aid.Object;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +16,9 @@ static public partial class CollectionExtensions
   /// Useful for <see cref="ReadOnlyCollection{T}.ReadOnlyCollection(IList{T})"/> constructor.
   /// </summary>
   /// <param name="emptyForNull">Chooses null or empty collection for null source.</param>
+  /// <returns>
+  /// <see langword="null"/> when <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="emptyForNull"/> is <see langword="false"/>.
+  /// </returns>
   static public IList<T> ToIList<T> ( this IEnumerable<T> iEnumerable, bool emptyForNull = default )
   {
     if (iEnumerable == null)
@@ -38,6 +43,9 @@ static public partial class CollectionExtensions
   /// The <see cref="ReadOnlyCollection{T}"/> from any enumerable.
   /// </summary>
   /// <param name="emptyForNull">Choses null or empty collection for null source.</param>
+  /// <returns>
+  /// <see langword="null"/> when <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="emptyForNull"/> is <see langword="false"/>.
+  /// </returns>
   static public ReadOnlyCollection<T> ToReadOnlyCollection<T> ( this IEnumerable<T> iEnumerable, bool emptyForNull = false )
   {
     return iEnumerable.IsNull () && !emptyForNull
@@ -48,6 +56,9 @@ static public partial class CollectionExtensions
 
   #region ReadOnylDictionary
 
+  /// <returns>
+  /// <see langword="null"/> when <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="emptyForNull"/> is <see langword="false"/>.
+  /// </returns>
   static public ReadOnlyDictionary<Key, Source> ToReadOnlyDictionary<Source, Key> (
     this IEnumerable<Source> iEnumerable,
     Func<Source, Key> keySelector,
@@ -56,6 +67,9 @@ static public partial class CollectionExtensions
     return iEnumerable.ToReadOnlyDictionary (keySelector, v => v, emptyForNull);
   }
 
+  /// <returns>
+  /// <see langword="null"/> when <paramref name="iEnumerable"/> is <see langword="null"/> and <paramref name="emptyForNull"/> is <see langword="false"/>.
+  /// </returns>
   static public ReadOnlyDictionary<Key, Value> ToReadOnlyDictionary<Source, Key, Value> (
     this IEnumerable<Source> iEnumerable,
     Func<Source, Key> keySelector,
@@ -69,6 +83,9 @@ static public partial class CollectionExtensions
       : new ReadOnlyDictionary<Key, Value> (iEnumerable.ToDictionary (keySelector, valueSlector));
   }
 
+  /// <returns>
+  /// <see langword="null"/> when <paramref name="dict"/> is <see langword="null"/> and <paramref name="emptyForNull"/> is <see langword="false"/>.
+  /// </returns>
   static public ReadOnlyDictionary<Key, Value> AsReadOnlyDictionary<Key, Value> ( this Dictionary<Key, Value> dict, bool emptyForNull = false )
   {
     return dict.IsNull ()

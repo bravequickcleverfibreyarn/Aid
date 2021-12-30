@@ -23,7 +23,7 @@ static public partial class CollectionExtensions
   /// <typeparam name="U">Desired as/to type.</typeparam>    
   /// <exception cref="ArgumentRangeExceptionC{T}">When <typeparamref name="U"/> is unsupported creation type.</exception>   
   /// <exception cref="ArgumentNullException">When <paramref name="enumerable"/> is <see langword="null"/> and <paramref name="emptyForNull"/> is <see langword="false"/>.</exception>
-  /// <remarks>Supports all types for casting.</remarks>    
+  /// <remarks>Supports all types for casting.</remarks>  
 #nullable enable
   static public U AsOrTo<T, U> ( this IEnumerable<T> enumerable, bool emptyForNull = false )
   {
