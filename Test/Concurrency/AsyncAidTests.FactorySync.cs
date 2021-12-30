@@ -14,7 +14,7 @@ public class AsyncAidTests_FactorySync
   [TestMethod]
   public void AsyncAideFactorySyncCtor__NullTaskScheduler___ThrowsArgumentNullException ()
   {
-    _ = Assert.ThrowsException<ArgumentNullException> (() => new AsyncAide.FactorySync (default, default, null));
+    _ = Assert.ThrowsException<ArgumentNullException> (() => new AsyncAide.FactorySync (default(TaskCreationOptions), default(TaskContinuationOptions), null));
   }
 
   // RunSync

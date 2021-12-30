@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Software9119.Aid.Collection;
-using Software9119.Aid.Enumerable;
+using Software9119.Aid.Enumerable.Unchecked;
 
 using System;
 using System.Collections.Generic;
@@ -291,7 +291,7 @@ public class StepTests
   [TestMethod]
   public void ZeroSizedStep_ThrowArgumentOutOfRangeException ()
   {
-    _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0, default));
+    _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0, default(int)));
     _ = Assert.ThrowsException<ArgumentOutOfRangeException> (() => new Step (0));
   }
 

@@ -12,6 +12,7 @@ static public partial class CollectionExtensions
 {
 
 #pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
+  
   /// <summary>
   /// Useful for <see cref="ReadOnlyCollection{T}.ReadOnlyCollection(IList{T})"/> constructor.
   /// </summary>

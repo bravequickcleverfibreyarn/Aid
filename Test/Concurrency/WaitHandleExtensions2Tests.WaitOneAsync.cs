@@ -84,16 +84,16 @@ sealed public class WaitHandleExtensionsTests_WaitOneAsync
   [TestMethod]
   public void PassNullTaskScheduler__ThrowsArgumentNullException ()
   {
-    using EventWaitHandle ewh = new (default, default);
+    using EventWaitHandle ewh = new (default(bool), default(EventResetMode));
 
     _ = Assert.ThrowsException<ArgumentNullException>
     (
-      () => ewh.WaitOneAsync (default, default (TimeSpan), scheduler: null!).Wait ()
+      () => ewh.WaitOneAsync (default (CancellationToken), default (TimeSpan), scheduler: null!).Wait ()
     );
 
     _ = Assert.ThrowsException<ArgumentNullException>
     (
-      () => ewh.WaitOneAsync (default, default (int), scheduler: null!).Wait ()
+      () => ewh.WaitOneAsync (default (CancellationToken), default (int), scheduler: null!).Wait ()
     );
   }
 
@@ -105,12 +105,12 @@ sealed public class WaitHandleExtensionsTests_WaitOneAsync
 
     _ = Assert.ThrowsException<ArgumentNullException>
     (
-      () => ewh!.WaitOneAsync (default, default (TimeSpan), scheduler).Wait ()
+      () => ewh!.WaitOneAsync (default (CancellationToken), default (TimeSpan), scheduler).Wait ()
     );
 
     _ = Assert.ThrowsException<ArgumentNullException>
     (
-      () => ewh!.WaitOneAsync (default, default (int), scheduler).Wait ()
+      () => ewh!.WaitOneAsync (default (CancellationToken), default (int), scheduler).Wait ()
     );
   }
 }

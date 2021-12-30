@@ -1,4 +1,4 @@
-﻿using Software9119.Aid.Enumerable;
+﻿using Software9119.Aid.Enumerable.Unchecked;
 using Software9119.Aid.Exception;
 
 using System;
@@ -14,7 +14,6 @@ static public partial class CollectionExtensions
 {
   static readonly ConcurrentDictionary<System.Type, System.Type[]> otherTypes      = new();
   static readonly ConcurrentDictionary<System.Type, System.Type[]> immutableTypes  = new();
-
 
   /// <summary>    
   /// Helper to cast <paramref name="enumerable"/> or create collection from <paramref name="enumerable"/>.
