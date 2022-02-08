@@ -53,7 +53,9 @@ public class TypeAideTests
   [TestMethod]
   public void IsUnManaged_ProvidedValue_ComplyExpectation ( System.Type type, bool expectation )
   {
+#pragma warning disable CS0618 // Type or member is obsolete
     Assert.AreEqual (expectation, TypeAide.IsUnManaged (type));
+#pragma warning restore CS0618 // Type or member is obsolete
   }
 
   struct Constructed1<T>
@@ -92,13 +94,17 @@ public class TypeAideTests
 
     System.Type typeOfInt = typeof(int);
 
+#pragma warning disable CS0618 // Type or member is obsolete
     Assert.IsTrue (TypeAide.IsUnManaged (typeOfInt));
+#pragma warning restore CS0618 // Type or member is obsolete
 
     Assert.IsTrue (cache.ContainsKey (typeOfInt));
 
     cache [typeOfInt] = false;
 
+#pragma warning disable CS0618 // Type or member is obsolete
     Assert.IsFalse (TypeAide.IsUnManaged (typeOfInt));
+#pragma warning restore CS0618 // Type or member is obsolete
 
     cache.Clear ();
   }
@@ -108,7 +114,9 @@ public class TypeAideTests
   {
     _ = Assert.ThrowsException<ArgumentNullException>
     (
+#pragma warning disable CS0618 // Type or member is obsolete
       () => TypeAide.IsUnManaged (null)
+#pragma warning restore CS0618 // Type or member is obsolete
     );
   }
 }

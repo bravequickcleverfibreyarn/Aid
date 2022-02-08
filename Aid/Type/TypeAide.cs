@@ -11,6 +11,7 @@ static public class TypeAide
 {
   static readonly ConcurrentDictionary<sType, bool> cache = new();
 
+  [Obsolete("Use System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>.")]
   static public bool IsUnManaged ( sType type )
   {
     if (type == null)

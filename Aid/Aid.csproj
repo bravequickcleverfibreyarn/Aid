@@ -16,8 +16,8 @@
     <Copyright>Verbal consent needed.</Copyright>
     <RootNamespace>Software9119.Aid</RootNamespace>    
     <AssemblyName>Software9119.Aid</AssemblyName>
-    <Version>11.0.1</Version>
-    <AssemblyVersion>11.0.1.0</AssemblyVersion>
+    <Version>11.0.2</Version>
+    <AssemblyVersion>11.0.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

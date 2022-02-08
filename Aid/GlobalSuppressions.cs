@@ -31,7 +31,6 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage ("Style", "IDE0046:Convert to conditional expression", Justification = "Fine.", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary``3(System.Collections.Generic.IEnumerable{``2},System.Func{``2,``0},System.Func{``2,``1},System.Int32,System.Boolean)~System.Collections.Generic.Dictionary{``0,``1}")]
 [assembly: SuppressMessage ("Style", "IDE0046:Convert to conditional expression", Justification = "Fine.", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToList``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Boolean)~System.Collections.Generic.List{``0}")]
 [assembly: SuppressMessage ("Style", "IDE0046:Convert to conditional expression", Justification = "Fine.", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{``1},System.Func{``1,``0},System.Int32,System.Boolean)~System.Collections.Generic.Dictionary{``0,``1}")]
-[assembly: SuppressMessage ("Style", "IDE0046:Convert to conditional expression", Justification = "Fine.", Scope = "member", Target = "~M:Software9119.Aid.Enumerable.EnumerableExtensions.NullOrThrow``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)~System.Boolean")]
 #endregion
 
 #region Naming
